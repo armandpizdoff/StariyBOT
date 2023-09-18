@@ -20,7 +20,6 @@ from dotenv import load_dotenv
 # from telebot import types
 # from keyboard import keyboard
 
-bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
 BASE_PATH = os.getenv('BASE_PATH')
 SOUND = os.getenv('SOUND')
@@ -40,6 +39,7 @@ MURLOK = os.getenv('MURLOK')
 COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
+bot = telebot.TeleBot('TOKEN')
 # logging.debug("A DEBUG Message")
 # logging.info("An INFO")
 # logging.warning("A WARNING")
