@@ -1,0 +1,118 @@
+import telebot
+from dotenv import load_dotenv
+import os
+
+
+bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
+load_dotenv()
+STORIES = os.getenv('STORIES')
+
+
+def rasskaziki(call):
+    if call.data == 'stories':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Свадьба Утэра', callback_data='uthermarriage')
+        button2 = telebot.types.InlineKeyboardButton(text='Утэр стал геем', callback_data='utherbecomegay')
+        button3 = telebot.types.InlineKeyboardButton(text='Артас хочет минет', callback_data='arthaswantsminet')
+        button4 = telebot.types.InlineKeyboardButton(text='Утэр и его проблема', callback_data='uthercropdick')
+        button5 = telebot.types.InlineKeyboardButton(text='Битва с гномами', callback_data='battlevsgnomy')
+        button6 = telebot.types.InlineKeyboardButton(text='Ссора Джины и Ильи', callback_data='iliaquarreljina')
+        button7 = telebot.types.InlineKeyboardButton(text='Презентация разработки Утэра',
+                                                     callback_data='utherdevelopment')
+        button8 = telebot.types.InlineKeyboardButton(text='Опера "Повесть о грустном Апполо"', callback_data='operaall')
+        button9 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
+        markup.row(button1, button2)
+        markup.row(button3, button4)
+        markup.row(button5, button6)
+        markup.row(button7)
+        markup.row(button8)
+        markup.row(button9)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
+    elif call.data == 'uthermarriage':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'uthermarriage1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'uthermarriage2.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'uthermarriage3.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'uthermarriage4.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'utherbecomegay':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherbecomegay1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherbecomegay2.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'arthaswantsminet':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthaswantsminet1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthaswantsminet2.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'utherdevelopment':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment2.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment3.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment4.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment5.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment6.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'uthercropdick':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'uthercropdick.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'battlevsgnomy':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'battlevsgnomy1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'battlevsgnomy2.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'battlevsgnomy3.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'iliaquarreljina':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'iliaquarreljina1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'iliaquarreljina2.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'operaall':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Первая глава', callback_data='opera1')
+        button2 = telebot.types.InlineKeyboardButton(text='Вторая глава', callback_data='opera2')
+        button3 = telebot.types.InlineKeyboardButton(text='Третья глава', callback_data='opera3')
+        button4 = telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories')
+        markup.row(button1, button2, button3)
+        markup.row(button4)
+        bot.send_message(call.message.chat.id, 'Господин, вы выбрали гранд-Оперу... Выберите главу:',
+                         reply_markup=markup)
+    elif call.data == 'opera1':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Вторая глава', callback_data='opera2'))
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera2.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera3.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera4.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera5.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera6.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'opera2':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Третья глава', callback_data='opera3'))
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera7.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera8.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera9.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera10.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera11.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'opera3':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera12.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera13.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera14.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera15.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera16.ogg', 'rb'), reply_markup=markup)

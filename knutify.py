@@ -1,0 +1,121 @@
+import telebot
+import random
+import os
+import time
+from dotenv import load_dotenv
+
+bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
+load_dotenv()
+PIC = os.getenv('PIC')
+CRUEL = os.getenv('CRUEL')
+
+
+def knutirovanie(call):
+    if call.data == 'knut':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
+        button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
+        button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
+        button4 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
+        button5 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование" ;) (Beta)', callback_data='game')
+        button6 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
+        markup.row(button1, button2, button3)
+        markup.row(button4)
+        markup.row(button5)
+        markup.row(button6)
+        bot.send_message(call.message.chat.id, text='Пожалуйста, выберите тип кнутирования:', reply_markup=markup)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+    elif call.data == 'clarify':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Да', callback_data='obossali')
+        button2 = telebot.types.InlineKeyboardButton(text='Нет', callback_data='mercy')
+        markup.row(button1, button2)
+        bot.send_message(call.message.chat.id, "Вы что, и в правду хотите обоссать меня, Сэр?", reply_markup=markup)
+    elif call.data == 'obossali':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='knut'))
+        bot.send_message(call.message.chat.id, text='{0.first_name} ({0.last_name} который), '
+                                                    'нунинаадааа!'.format(call.from_user, bot.get_me()))
+        bot.send_message(call.message.chat.id, 'глолгоглгогл!')
+        bot.send_animation(call.message.chat.id,
+                           animation=open(PIC + 'obossal i otstraponil/obossal.gif', 'rb'),
+                           reply_markup=markup)
+    elif call.data == 'mercy':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='back'))
+        bot.send_message(call.message.chat.id, text=':)')
+        time.sleep(1)
+        bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.', reply_markup=markup)
+    elif call.data == 'junior':
+        bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
+    elif call.data == 'middle':
+        bot.send_message(call.message.chat.id, 'Нет, я не дам себя в обиду. Руки! ')
+        time.sleep(1)
+        bot.send_message(call.message.chat.id, 'А то малява на Ваше имя уже завтра будет в мусарне...')
+        time.sleep(2)
+        bot.send_message(call.message.chat.id, 'Да, я мусарнусь.')
+    elif call.data == 'senior':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Пиздануть ещё раз', callback_data='senior'))
+        markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+        rimage = random.choice(os.listdir(CRUEL))
+        rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
+                                 'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* '])
+        rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ', '(ооо, даа...) ',
+                                  'УХ БЛЯ ', 'Равиолли с сыром, пожалуйста! ', 'СЖАЛЬСЯ, ГАНДОН! ',
+                                  'ТОЛЬКО НЕ КАЛЕНВАЛ! ', '*звуки насилия* ', 'кто-нибудь, подберите мои зубы! '])
+        rscream3 = random.choice(['*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'СЭР! У меня лопатка оторвалась! ',
+                                  'ХРЕБЕ-Е-ЕТ!!! ', 'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа! ',
+                                  'А-А-А-А!!! ', 'Кто-нибудь, подберите мою скальп!!! '])
+        bot.send_message(call.message.chat.id, rscream + rscream2)
+        time.sleep(1)
+        bot.send_message(call.message.chat.id, rscream3)
+        bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage, 'rb'))
+        bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
+    elif call.data == 'senior2':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Продолжать уродовать выблядка 👨‍🦼',
+                                                      callback_data='senior2'))
+        markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+        rimage = random.choice(os.listdir(CRUEL))
+        rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
+                                 'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* ',
+                                 'А-АЙ, жооопа! '])
+        rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ', '(ооо, даа...) ',
+                                  'УХ БЛЯ ', 'ПОЖАЛУЙСТА!! ', 'СЖАЛЬСЯ, ГАНДОН! ', 'ТОЛЬКО НЕ КАЛЕНВАЛ! ',
+                                  '*звуки насилия* ', 'кто-нибудь, подберите мои зубы! ',
+                                  'Только не равиолли с сыром в анал! ТОЛЬКО НЕ РАВИОЛЛИ С СЫРОМ В АНАЛ! НЕЕЕЕЕЕАТ! '])
+        rscream3 = random.choice(['*слёзы* ', '*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'ХРЕБЕ-Е-ЕТ!!! ',
+                                  'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа! ',
+                                  'А-А-А-А!!! ', 'СЭР! У меня лопатка оторвалась! ',
+                                  'Кто-нибудь, подберите мою скальп!!! '])
+        rscream4 = random.choice(['АРХГХРХХХХ ', 'СЭР! ОНО НЕ ВЛЕЗАЕТ МНЕ В АНАЛ! ',
+                                  'КНУТ РАССЁК МОЁ ПРАВОЕ ЯИЦО! ААА! ', 'Нет, я не носил парик! Моя Скальп!!! '])
+        bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, так нечестно! Мы же договаривались! '
+                                               '\nОЙ! Остановитесь! Умоляю, не нужно!'
+                         .format(call.from_user, bot.get_me()))
+        time.sleep(2)
+        bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage, 'rb'))
+        time.sleep(2)
+        bot.send_message(call.message.chat.id, rscream2 + rscream)
+        time.sleep(2)
+        bot.send_message(call.message.chat.id, rscream4 + rscream3)
+        time.sleep(2)
+        bot.send_message(call.message.chat.id, 'ААААЙ!')
+        time.sleep(2)
+        rimage2 = random.choice(os.listdir(CRUEL))
+        bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
+        bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
+
+
+def text_knutirovanie(message):
+    markup = telebot.types.InlineKeyboardMarkup()
+    button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
+    button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
+    button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
+    button4 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
+    button5 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
+    markup.row(button1, button2, button3)
+    markup.row(button4)
+    markup.row(button5)
+    bot.send_message(message.chat.id, text='За что, Сэр?', reply_markup=markup)
