@@ -424,7 +424,7 @@ def query_handler(call):
     #        print(worksheet.cell_value(i, j), end='\t')
     #    bot.send_message(call.message.chat.id, worksheet.cell_value(i, j))
     elif call.data == 'grafikfile':
-        bot.send_document(call.message.chat.id, document=open(BASE_PATH + 'grafik/grafik.xlsx', "rb"))
+        bot.send_document(call.message.chat.id, document=open(BASE_PATH + 'storage/grafik/grafik.png', "rb"))
     elif call.data == 'grafikved':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='grafik'))
