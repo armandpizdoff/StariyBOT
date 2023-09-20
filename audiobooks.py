@@ -1,6 +1,7 @@
 import telebot
 from dotenv import load_dotenv
 import os
+import time
 
 
 bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
@@ -53,10 +54,15 @@ def rasskaziki(call):
         markup.add(telebot.types.InlineKeyboardButton(text='Назад к выбору рассказиков', callback_data='stories'))
         bot.send_chat_action(call.message.chat.id, 'upload_audio')
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment1.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment2.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment3.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment4.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment5.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'utherdevelopment6.ogg', 'rb'), reply_markup=markup)
     elif call.data == 'uthercropdick':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -92,10 +98,15 @@ def rasskaziki(call):
         markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
         bot.send_chat_action(call.message.chat.id, 'upload_audio')
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera1.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera2.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera3.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera4.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera5.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera6.ogg', 'rb'), reply_markup=markup)
     elif call.data == 'opera2':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -103,16 +114,24 @@ def rasskaziki(call):
         markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
         bot.send_chat_action(call.message.chat.id, 'upload_audio')
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera7.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera8.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera9.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera10.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera11.ogg', 'rb'), reply_markup=markup)
     elif call.data == 'opera3':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Назад к оглавлению', callback_data='operaall'))
         bot.send_chat_action(call.message.chat.id, 'upload_audio')
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera12.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera13.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera14.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera15.ogg', 'rb'))
+        time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'opera16.ogg', 'rb'), reply_markup=markup)
