@@ -17,8 +17,6 @@ from dotenv import load_dotenv
 # from datetime import datetime, timedelta
 # import requests - для парсинга шуток с сайтов
 # from bs4 import BeautifulSoup - для парсинга данных с сайтов
-# from telebot import types
-# from keyboard import keyboard
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
