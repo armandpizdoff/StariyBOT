@@ -274,10 +274,13 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
         button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
         button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-        button6 = telebot.types.InlineKeyboardButton(text="Закрыть🚫", callback_data='cancel')
+        button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (в разработке)',
+                                                     url='http://onlynotcrankshaft.ru')
+        button7 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
         markup.row(button1, button2)
         markup.row(button3, button4, button5)
         markup.row(button6)
+        markup.row(button7)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'knut':
         knutify.knutirovanie(call)
