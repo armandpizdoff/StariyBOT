@@ -70,4 +70,4 @@ def get_text_messages(message):
         bot.send_photo(message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
         bot.send_message(message.chat.id, 'МММММММММ!!! ММММММММММММММММММММММ!', reply_markup=markup)
     elif message.text == 'ты лох':
-        bot.send_message(chat_id='ecosystem_Stariy', text='Запомните, твари: Я не сломаюсь..')
+        bot.send_message(chat_id='-1001892218052', text='Запомните, твари: Я не сломаюсь..')
