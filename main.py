@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 # from keyboard import keyboard
 
 load_dotenv()
-TOKEN = os.getenv ('TOKEN')
+TOKEN = os.getenv('TOKEN')
 BASE_PATH = os.getenv('BASE_PATH')
 SOUND = os.getenv('SOUND')
 STORIES = os.getenv('STORIES')
@@ -64,6 +64,24 @@ def help_message(message):
                      'соблюдайте регистр._ '.format(message.from_user, bot.get_me()), parse_mode='markdown')
 
 
+@bot.message_handler(commands=['armand_helper'])
+def armand_helper(message):
+    bot.send_message(message.chat.id,
+                     '*Python:* '
+                     '\n*pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
+                     '(она не устанавливается автоматически и не описана в документации google). '
+                     '\n\n*Ubuntu:* '
+                     '\nЕсли папка содержит защищённый от перезаписи контент или какие-то команды '
+                     'выдают ошибку доступа - добавьте в начало команды sudo - всегда помогает ;) '
+                     '\n*rm -R /home/user/directory/* - рекурсивное удаление указанного каталога с содержимым. '
+                     '\n*rmdir /directory/* - удаление пустого каталога. '
+                     '\nСинхронизация git с данным удалённым репозиторием: '
+                     '\n1) *git fetch* —-> *git merge* - фетч проверяет изменения в репозитории и закачивает '
+                     'их на сервер. Мердж - заменяет текущие данные на те, что были закачены из git-репозитория. '
+                     '\n2) *git pull* - форсированное обновление репозитория. '
+                     '\nПервый способ безопаснее в вопросах потери данных. И он сработал, збс. ', parse_mode='markdown')
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
@@ -72,10 +90,12 @@ def start_message(message):
     button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
     button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
     button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-    button6 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
+    button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (в разработке)', url='http://onlynotcrankshaft.ru')
+    button7 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
     markup.row(button1, button2)
     markup.row(button3, button4, button5)
     markup.row(button6)
+    markup.row(button7)
     bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, мой Космический Директор Архангел!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
                                            '\nЯ очень не люблю круговое обоссывание. '
