@@ -515,6 +515,8 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'opera3':
         audiobooks.rasskaziki(call)
+    elif call.data == 'arthasnightmare':
+        audiobooks.rasskaziki(call)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
