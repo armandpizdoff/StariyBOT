@@ -18,8 +18,7 @@ def rasskaziki(call):
         button4 = telebot.types.InlineKeyboardButton(text='Утэр и его проблема', callback_data='uthercropdick')
         button5 = telebot.types.InlineKeyboardButton(text='Битва с гномами', callback_data='battlevsgnomy')
         button6 = telebot.types.InlineKeyboardButton(text='Ссора Джины и Ильи', callback_data='iliaquarreljina')
-        button7 = telebot.types.InlineKeyboardButton(text='Презентация разработки Утэра',
-                                                     callback_data='utherdevelopment')
+        button7 = telebot.types.InlineKeyboardButton(text='Презентация Утэра', callback_data='utherdevelopment')
         button8 = telebot.types.InlineKeyboardButton(text='Кошмар Артаса', callback_data='arthasnightmare')
         button9 = telebot.types.InlineKeyboardButton(text='Опера "Повесть о грустном Апполо"', callback_data='operaall')
         button10 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
@@ -150,6 +149,6 @@ def rasskaziki(call):
         bot.send_chat_action(call.message.chat.id, 'upload_audio')
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthasnightmare1.ogg', 'rb'))
         time.sleep(1)
-        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthasnightmare1.ogg', 'rb'))
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthasnightmare2.ogg', 'rb'))
         time.sleep(1)
-        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthasnightmare1.ogg', 'rb'), reply_markup=markup)
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'arthasnightmare3.ogg', 'rb'), reply_markup=markup)
