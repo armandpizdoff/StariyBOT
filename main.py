@@ -563,6 +563,8 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'скрытое отхлищивание...':
         textcommand.get_text_messages(message)
+    elif message.text == 'ты лох':
+        textcommand.get_text_messages(message)
 
 
 bot.polling(none_stop=True, interval=0)
