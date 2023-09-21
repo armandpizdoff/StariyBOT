@@ -52,13 +52,13 @@ def help_message(message):
                      '*Список быстрых команд:* '
                      '\n/start - получить спектр услуг. '
                      '\n/help - получить помощь сил *Свыше*. '
-                     '\n/knut - отхлищеть меня. '
                      '\n/music - сделать меня томадой. '
                      '\n\n*Список печатных команд:* '
-                     '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
-                     '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
-                     '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
-                     '\n\n_Если вводите команду вручную - '
+                     '\n__кнут__ - пожалуйста не надо, Господин {0.first_name}! '
+                     '\n__музыка__ - сделайте меня томадой, мистер {0.first_name}. '
+                     '\n__покажи Путина__ - чтобы я привёл Вам перзидента Роисии. '
+                     '\n__скрытое отхлищивание...__ - кнутирование 4-го уровня. '
+                     '\n\nЕсли вводите команду вручную - '
                      'соблюдайте регистр._ '.format(message.from_user, bot.get_me()), parse_mode='markdown')
 
 
@@ -77,7 +77,10 @@ def armand_helper(message):
                      '\n1) *git fetch* —-> *git merge* - фетч проверяет изменения в репозитории и закачивает '
                      'их на сервер. Мердж - заменяет текущие данные на те, что были закачены из git-репозитория. '
                      '\n2) *git pull* - форсированное обновление репозитория. '
-                     '\nПервый способ безопаснее в вопросах потери данных. И он сработал, збс. ', parse_mode='markdown')
+                     '\nПервый способ безопаснее в вопросах потери данных. И он сработал, збс. '
+                     '\n\n*Telegram:* '
+                     '\n1) @username_to_id_bot - бот позволяет узнать свой ID или ID любого чата. '
+                     'Для этого его НЕ ОБЯЗАТЕЛЬНО добавлять в чат. ', parse_mode='markdown')
 
 
 @bot.message_handler(commands=['start'])
@@ -94,19 +97,13 @@ def start_message(message):
     markup.row(button3, button4, button5)
     markup.row(button6)
     markup.row(button7)
-    bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, мой Космический Директор Архангел!'
+    bot.send_message(message.chat.id, text='*Здравствуйте, Космический Директор Архангел {0.first_name}!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
                                            '\nЯ очень не люблю круговое обоссывание. '
                                            '\nЧтобы использовать меня в своих личных целях, '
                                            'выберите интересующий раздел меню'.format(message.from_user, bot.get_me()),
                      parse_mode='markdown', reply_markup=markup)
-
-
 # .format(message.chat.id)
-
-@bot.message_handler(commands=['knut'])
-def textknut(message):
-    knutify.text_knutirovanie(message)
 
 
 @bot.message_handler(commands=['play'])

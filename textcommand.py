@@ -35,7 +35,7 @@ def get_text_messages(message):
     elif message.text == 'if he dies':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Отомстить Старому за Апполо Крида...',
-                                                      callback_data='senior'))
+                                                      callback_data='senior2'))
         bot.send_message(message.chat.id, '... he dies.', reply_markup=markup)
     elif message.text == 'скрытое отхлищивание...':
         markup = telebot.types.InlineKeyboardMarkup()
