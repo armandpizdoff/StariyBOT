@@ -54,10 +54,10 @@ def help_message(message):
                                            '\n/music - сделать меня томадой. '
                                            '\n/armand_helper - пельменная Виктора Чипотловича. '
                                            '\n\n*Список печатных команд:* '
-                                           '\n__кнут__ - пожалуйста не надо, Господин {0.first_name}! '
-                                           '\n__музыка__ - сделайте меня томадой, мистер {0.first_name}. '
-                                           '\n__покажи Путина__ - чтобы я привёл Вам перзидента Роисии. '
-                                           '\n__скрытое отхлищивание...__ - кнутирование 4-го уровня. '
+                                           '\n*кнут_ - пожалуйста не надо, Господин {0.first_name}! '
+                                           '\n*музыка_ - сделайте меня томадой, мистер {0.first_name}. '
+                                           '\n*покажи Путина_ - чтобы я привёл Вам перзидента Роисии. '
+                                           '\n*скрытое отхлищивание..._ - кнутирование 4-го уровня. '
                                            '\n\nЕсли вводите команду вручную - '
                                            'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
                      parse_mode='markdown')
@@ -513,7 +513,8 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         markup.row(button1, button2, button3, button4)
-        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='~~Пельменная~~ Справочная "*Старый+*". Чем вам помочь?',
+                         parse_mode='markdown', reply_markup=markup)
     elif call.data == 'python':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
@@ -554,7 +555,7 @@ def query_handler(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Telegram:* '
                                                     '\n1) *username_to_id_bot* - подставь собаку перед '
-                                                    'названием. Бот позволяет узнать свой ID '
+                                                    'названием. Этот бот позволяет узнать свой ID '
                                                     'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
                                                     'добавлять в чат. ', parse_mode='markdown', reply_markup=markup)
 
