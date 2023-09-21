@@ -52,27 +52,27 @@ def help_message(message):
                                            '\n/start - получить спектр услуг. '
                                            '\n/help - засуммонить помощь. '
                                            '\n/music - сделать меня томадой. '
-                                           '\n/armand_helper - пельменная Виктора Чипотловича. '
+                                           '\n/armandhelper - пельменная Виктора Чипотловича. '
                                            '\n\n*Список печатных команд:* '
-                                           '\n*кнут_ - пожалуйста не надо, Господин {0.first_name}! '
-                                           '\n*музыка_ - сделайте меня томадой, мистер {0.first_name}. '
-                                           '\n*покажи Путина_ - чтобы я привёл Вам перзидента Роисии. '
-                                           '\n*скрытое отхлищивание..._ - кнутирование 4-го уровня. '
+                                           '\n_кнут_ - пожалуйста не надо, Господин {0.first_name}! '
+                                           '\n_музыка_ - сделайте меня томадой, мистер {0.first_name}. '
+                                           '\n_покажи Путина_ - чтобы я привёл Вам перзидента Роисии. '
+                                           '\n_скрытое отхлищивание..._ - кнутирование 4-го уровня. '
                                            '\n\nЕсли вводите команду вручную - '
                                            'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
-                     parse_mode='markdown')
+                     parse_mode='MarkdownV2')
 
 
-@bot.message_handler(commands=['armand_helper'])
-def armand_helper(message):
+@bot.message_handler(commands=['armandhelper'])
+def armandhelper(message):
     markup = telebot.types.InlineKeyboardMarkup()
     button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
     button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     markup.row(button1, button2, button3, button4)
-    bot.send_message(message.chat.id, text='~~Пельменная~~ Справочная "*Старый+*". Чем вам помочь?',
-                     parse_mode='markdown', reply_markup=markup)
+    bot.send_message(message.chat.id, text='~Пельменная~ Справочная "*Старый+*". Чем вам помочь?',
+                     parse_mode='MarkdownV2', reply_markup=markup)
 
 
 @bot.message_handler(commands=['start'])
@@ -514,7 +514,7 @@ def query_handler(call):
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         markup.row(button1, button2, button3, button4)
         bot.send_message(call.message.chat.id, text='~~Пельменная~~ Справочная "*Старый+*". Чем вам помочь?',
-                         parse_mode='markdown', reply_markup=markup)
+                         parse_mode='MarkdownV2', reply_markup=markup)
     elif call.data == 'python':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
