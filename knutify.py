@@ -16,7 +16,8 @@ def knutirovanie(call):
         button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
         button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
         button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
-        button4 = telebot.types.InlineKeyboardButton(text='Кнутирование уровня senior2', callback_data='senior2')
+        button4 = telebot.types.InlineKeyboardButton(text='👨‍🦼👨‍🦼Кнутирование 4-го уровня👨‍🦼👨‍🦼',
+                                                     callback_data='senior2')
         button5 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование" ;) (Beta)', callback_data='game')
         button6 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
         button7 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
@@ -107,5 +108,3 @@ def knutirovanie(call):
         rimage2 = random.choice(os.listdir(CRUEL))
         bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
         bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
-
-
