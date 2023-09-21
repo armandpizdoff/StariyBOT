@@ -60,7 +60,7 @@ def help_message(message):
                                            '\nскрытое отхлищивание... - кнутирование 4-го уровня. '
                                            '\n\nЕсли вводите команду вручную - '
                                            'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
-                     parse_mode='MarkdownV2')
+                     parse_mode='markdown')
 
 
 @bot.message_handler(commands=['armandhelper'])
