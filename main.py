@@ -70,7 +70,8 @@ def armand_helper(message):
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     markup.row(button1, button2, button3, button4)
-    bot.send_message(message.chat.id, text='Справочная "Старый+". Чем вам помочь?', reply_markup=markup)
+    bot.send_message(message.chat.id, text='~Пельменная~ Справочная "*Старый+*". Чем вам помочь?',
+                     parse_mode='markdown', reply_markup=markup)
 
 
 @bot.message_handler(commands=['start'])
@@ -533,7 +534,8 @@ def query_handler(call):
                                                     'И он сработал, збс. ', parse_mode='markdown')
     elif call.data == 'telegram':
         bot.send_message(call.message.chat.id, text='*Telegram:* '
-                                                    '\n1) @username_to_id_bot - бот позволяет узнать свой ID '
+                                                    '\n1) @ username_to_id_bot - удали пробел между собакой '
+                                                    'и названием. Бот позволяет узнать свой ID '
                                                     'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
                                                     'добавлять в чат. ', parse_mode='markdown')
 
