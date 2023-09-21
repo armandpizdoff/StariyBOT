@@ -48,8 +48,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
-    bot.send_message(message.chat.id,
-                     '*Список быстрых команд:* '
+    bot.send_message(message.chat.id, text='*Список быстрых команд:* '
                      '\n/start - получить спектр услуг. '
                      '\n/help - получить помощь сил *Свыше*. '
                      '\n/music - сделать меня томадой. '
@@ -64,8 +63,7 @@ def help_message(message):
 
 @bot.message_handler(commands=['armand_helper'])
 def armand_helper(message):
-    bot.send_message(message.chat.id,
-                     '*Python:* '
+    bot.send_message(message.chat.id, text='*Python:* '
                      '\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                      '(она не устанавливается автоматически и не описана в документации google). '
                      '\n\n*Ubuntu:* '
