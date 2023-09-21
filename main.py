@@ -49,21 +49,23 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['help'])
 def help_message(message):
     bot.send_message(message.chat.id, text='*Список быстрых команд:* '
-                     '\n/start - получить спектр услуг. '
-                     '\n/help - получить помощь сил *Свыше*. '
-                     '\n/music - сделать меня томадой. '
-                     '\n\n*Список печатных команд:* '
-                     '\n__кнут__ - пожалуйста не надо, Господин {0.first_name}! '
-                     '\n__музыка__ - сделайте меня томадой, мистер {0.first_name}. '
-                     '\n__покажи Путина__ - чтобы я привёл Вам перзидента Роисии. '
-                     '\n__скрытое отхлищивание...__ - кнутирование 4-го уровня. '
-                     '\n\nЕсли вводите команду вручную - '
-                     'соблюдайте регистр._ '.format(message.from_user, bot.get_me()), parse_mode='markdown')
+                                           '\n/start - получить спектр услуг. '
+                                           '\n/help - получить помощь сил *Свыше*. '
+                                           '\n/music - сделать меня томадой. '
+                                           '\n\n*Список печатных команд:* '
+                                           '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
+                                           '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
+                                           '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
+                                           '\nскрытое отхлищивание... - кнутирование 4-го уровня. '
+                                           '\n\nЕсли вводите команду вручную - '
+                                           'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
+                     parse_mode='markdown')
 
 
 @bot.message_handler(commands=['armand_helper'])
 def armand_helper(message):
-    bot.send_message(message.chat.id, text='*Python:* '
+    bot.send_message(message.chat.id, 
+                     '*Python:* '
                      '\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                      '(она не устанавливается автоматически и не описана в документации google). '
                      '\n\n*Ubuntu:* '
