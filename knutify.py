@@ -2,7 +2,9 @@ import telebot
 import random
 import os
 import time
+import phrases
 from dotenv import load_dotenv
+
 
 bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
@@ -48,6 +50,8 @@ def knutirovanie(call):
         bot.send_message(call.message.chat.id, text=':)')
         time.sleep(1)
         bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.', reply_markup=markup)
+        time.sleep(1)
+        bot.send_message(call.message.chat.id, text=phrases.digital_stariy, reply_markup=markup)
     elif call.data == 'junior':
         bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
     elif call.data == 'middle':
@@ -93,7 +97,7 @@ def knutirovanie(call):
                                   'Кто-нибудь, подберите мою скальп!!! '])
         rscream4 = random.choice(['АРХГХРХХХХ ', 'СЭР! ОНО НЕ ВЛЕЗАЕТ МНЕ В АНАЛ! ',
                                   'КНУТ РАССЁК МОЁ ПРАВОЕ ЯИЦО! ААА! ', 'Нет, я не носил парик! Моя Скальп!!! '])
-        bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, так нечестно! Мы же договаривались! '
+        bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, СЖАЛЬТЕСЬ! Только не снова! '
                                                '\nОЙ! Остановитесь! Умоляю, не нужно!'
                          .format(call.from_user, bot.get_me()))
         time.sleep(2)
