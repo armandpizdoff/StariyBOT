@@ -64,33 +64,13 @@ def help_message(message):
 
 @bot.message_handler(commands=['armand_helper'])
 def armand_helper(message):
-    bot.send_message(message.chat.id, text='*Python:* '
-                                           '\n1) *pip install googletrans==3.1.0a0* - последняя версия '
-                                           'google-переводчика (она не устанавливается автоматически и не '
-                                           'описана в документации google). '
-                                           '\n\n*Ubuntu:* '
-                                           '\nЕсли папка содержит защищённый от перезаписи контент или какие-то '
-                                           'команды выдают ошибку доступа - добавьте в начало команды sudo - '
-                                           'всегда помогает ;) '
-                                           '\n1) *adduser user* - создать нового пользователя. '
-                                           '\n2) *usermod -aG sudo user* - наделить его полномочиями. '
-                                           '\n3) *su user* - переключение на другого пользователя '
-                                           'без перезахода на сервер.  '
-                                           '\n4) *rm -R /home/user/directory/* - рекурсивное удаление указанного '
-                                           'каталога с содержимым. '
-                                           '\n5) *rmdir /directory/* - удаление пустого каталога. '
-                                           '\n6) *df -h* - отображение дискового пространства с критерием '
-                                           'использования памяти. '
-                                           '\n\nСинхронизация *git* с данным удалённым репозиторием: '
-                                           '\n1) *git fetch* —-> *git merge* - фетч проверяет изменения в '
-                                           'репозитории и закачивает их на сервер. Мердж - заменяет текущие '
-                                           'данные на те, что были закачены из git-репозитория. '
-                                           '\n2) *git pull* - форсированное обновление репозитория. '
-                                           '\nПервый способ безопаснее в вопросах потери данных. И он сработал, збс. '
-                                           '\n\n*Telegram:* '
-                                           '\n1) @username_to_id_bot - бот позволяет узнать свой ID '
-                                           'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
-                                           'добавлять в чат. ', parse_mode='markdown')
+    markup = telebot.types.InlineKeyboardMarkup()
+    button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
+    button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
+    button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
+    button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
+    markup.row(button1, button2, button3, button4)
+    bot.send_message(message.chat.id, text='Справочная "Старый+". Чем вам помочь?', reply_markup=markup)
 
 
 @bot.message_handler(commands=['start'])
@@ -524,6 +504,38 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'arthasnightmare':
         audiobooks.rasskaziki(call)
+    elif call.data == 'python':
+        bot.send_message(call.message.chat.id, text='*Python:* '
+                                                    '\n1) *pip install googletrans==3.1.0a0* - последняя версия '
+                                                    'google-переводчика (она не устанавливается автоматически и не '
+                                                    'описана в документации google). ', parse_mode='markdown')
+    elif call.data == 'ubuntu':
+        bot.send_message(call.message.chat.id, text='*Ubuntu:* '
+                                                    '\nЕсли папка содержит защищённый от перезаписи контент '
+                                                    'или какие-то команды выдают ошибку доступа - добавьте в '
+                                                    'начало команды sudo - всегда помогает ;) '
+                                                    '\n1) *adduser user* - создать нового пользователя. '
+                                                    '\n2) *usermod -aG sudo user* - наделить его полномочиями. '
+                                                    '\n3) *su user* - переключение на другого пользователя '
+                                                    'без перезахода на сервер. '
+                                                    '\n4) *rm -R /home/user/directory/* - рекурсивное удаление '
+                                                    'указанного каталога с содержимым. '
+                                                    '\n5) *rmdir /directory/* - удаление пустого каталога. '
+                                                    '\n6) *df -h* - отображение дискового пространства с критерием '
+                                                    'использования памяти. ', parse_mode='markdown')
+    elif call.data == 'git':
+        bot.send_message(call.message.chat.id, text='Синхронизация *git* с данным удалённым репозиторием: '
+                                                    '\n1) *git fetch* --> *git merge* - фетч проверяет изменения в '
+                                                    'репозитории и закачивает их на сервер. Мердж - заменяет '
+                                                    'текущие данные на те, что были закачены из git-репозитория. '
+                                                    '\n2) *git pull* - форсированное обновление репозитория. '
+                                                    '\nПервый способ безопаснее в вопросах потери данных. '
+                                                    'И он сработал, збс. ', parse_mode='markdown')
+    elif call.data == 'telegram':
+        bot.send_message(call.message.chat.id, text='*Telegram:* '
+                                                    '\n1) @username_to_id_bot - бот позволяет узнать свой ID '
+                                                    'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
+                                                    'добавлять в чат. ', parse_mode='markdown')
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
