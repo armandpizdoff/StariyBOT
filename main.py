@@ -237,19 +237,20 @@ def query_handler(call):
     if call.data == 'main menu':
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Всратые звуки❗', callback_data='sounds')
-        button2 = telebot.types.InlineKeyboardButton(text='Карусель Желаний', callback_data='carouselwishes')
-        button3 = telebot.types.InlineKeyboardButton(text='Рубрика "Весёлые Нигеры"', callback_data='carouselniggers')
-        button4 = telebot.types.InlineKeyboardButton(text='Различные рассказики', callback_data='stories')
-        button5 = telebot.types.InlineKeyboardButton(text='Сочные тёлки🐄', callback_data='cow')
-        button6 = telebot.types.InlineKeyboardButton(text='Юмор', callback_data='joke')
-        button7 = telebot.types.InlineKeyboardButton(text='TV📺', url='https://www.glaz.tv/online-tv/')
-        button8 = telebot.types.InlineKeyboardButton(text='Постоянно улучшаемая картинка✏', callback_data='better')
-        button9 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='back')
-        markup.row(button1, button2)
-        markup.row(button3, button4)
-        markup.row(button5, button6, button7)
-        markup.row(button8)
+        button2 = telebot.types.InlineKeyboardButton(text='Игры', callback_data='game')
+        button3 = telebot.types.InlineKeyboardButton(text='Карусель Желаний', callback_data='carouselwishes')
+        button4 = telebot.types.InlineKeyboardButton(text='Рубрика "Весёлые Нигеры"', callback_data='carouselniggers')
+        button5 = telebot.types.InlineKeyboardButton(text='Различные рассказики', callback_data='stories')
+        button6 = telebot.types.InlineKeyboardButton(text='Сочные тёлки🐄', callback_data='cow')
+        button7 = telebot.types.InlineKeyboardButton(text='Юмор', callback_data='joke')
+        button8 = telebot.types.InlineKeyboardButton(text='TV📺', url='https://www.glaz.tv/online-tv/')
+        button9 = telebot.types.InlineKeyboardButton(text='Постоянно улучшаемая картинка✏', callback_data='better')
+        button10 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='back')
+        markup.row(button1, button2, button3)
+        markup.row(button4, button5)
+        markup.row(button6, button7, button8)
         markup.row(button9)
+        markup.row(button10)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'cancel':
         bot.send_photo(call.message.chat.id, photo=open(PIC + 'okay.jpg', "rb"))
@@ -272,7 +273,15 @@ def query_handler(call):
     elif call.data == 'knut':
         knutify.knutirovanie(call)
     elif call.data == 'game':
-        bot.send_message(call.message.chat.id, 'Если вы хотите, чтобы я придумал игру - используйте /play!')
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование ;)" (Beta)',
+                                                     callback_data='funnyknut')
+        button2 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
+        markup.row (button1)
+        markup.row (button2)
+        bot.send_message(call.message.chat.id, 'Выберите игру: ', reply_markup=markup)
+    elif call.data == 'funnyknut':
+        bot.send_message(call.message.chat.id, 'Для игры в "Весёлое кнутирование" - нажмите /play!')
     elif call.data == 'clarify':
         knutify.knutirovanie(call)
     elif call.data == 'obossali':

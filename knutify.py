@@ -20,13 +20,11 @@ def knutirovanie(call):
         button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
         button4 = telebot.types.InlineKeyboardButton(text='👨‍🦼👨‍🦼Кнутирование 4-го уровня👨‍🦼👨‍🦼',
                                                      callback_data='senior2')
-        button5 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование" ;) (Beta)', callback_data='game')
-        button6 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
-        button7 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
+        button5 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
+        button6 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
         markup.row(button1, button2, button3)
         markup.row(button4)
-        markup.row(button5)
-        markup.row(button6, button7)
+        markup.row(button5, button6)
         bot.send_message(call.message.chat.id, text='Пожалуйста, выберите тип кнутирования:', reply_markup=markup)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
     elif call.data == 'clarify':
