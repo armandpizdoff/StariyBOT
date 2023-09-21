@@ -54,10 +54,10 @@ def help_message(message):
                                            '\n/music - сделать меня томадой. '
                                            '\n/armandhelper - пельменная Виктора Чипотловича. '
                                            '\n\n*Список печатных команд:* '
-                                           '\n_кнут_ - пожалуйста не надо, Господин {0.first_name}! '
-                                           '\n_музыка_ - сделайте меня томадой, мистер {0.first_name}. '
-                                           '\n_покажи Путина_ - чтобы я привёл Вам перзидента Роисии. '
-                                           '\n_скрытое отхлищивание..._ - кнутирование 4-го уровня. '
+                                           '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
+                                           '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
+                                           '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
+                                           '\nскрытое отхлищивание... - кнутирование 4-го уровня. '
                                            '\n\nЕсли вводите команду вручную - '
                                            'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
                      parse_mode='MarkdownV2')
@@ -71,8 +71,8 @@ def armandhelper(message):
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     markup.row(button1, button2, button3, button4)
-    bot.send_message(message.chat.id, text='~Пельменная~ Справочная "*Старый+*". Чем вам помочь?',
-                     parse_mode='MarkdownV2', reply_markup=markup)
+    bot.send_message(message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
+                     parse_mode='HTML', reply_markup=markup)
 
 
 @bot.message_handler(commands=['start'])
