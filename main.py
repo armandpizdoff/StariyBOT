@@ -50,13 +50,14 @@ bot = telebot.TeleBot(TOKEN)
 def help_message(message):
     bot.send_message(message.chat.id, text='*Список быстрых команд:* '
                                            '\n/start - получить спектр услуг. '
-                                           '\n/help - получить помощь сил *Свыше*. '
+                                           '\n/help - засуммонить помощь. '
                                            '\n/music - сделать меня томадой. '
+                                           '\n/armand_helper - пельменная Виктора Чипотловича. '
                                            '\n\n*Список печатных команд:* '
-                                           '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
-                                           '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
-                                           '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
-                                           '\nскрытое отхлищивание... - кнутирование 4-го уровня. '
+                                           '\n__кнут__ - пожалуйста не надо, Господин {0.first_name}! '
+                                           '\n__музыка__ - сделайте меня томадой, мистер {0.first_name}. '
+                                           '\n__покажи Путина__ - чтобы я привёл Вам перзидента Роисии. '
+                                           '\n__скрытое отхлищивание...__ - кнутирование 4-го уровня. '
                                            '\n\nЕсли вводите команду вручную - '
                                            'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
                      parse_mode='markdown')
@@ -70,7 +71,7 @@ def armand_helper(message):
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     markup.row(button1, button2, button3, button4)
-    bot.send_message(message.chat.id, text='~Пельменная~ Справочная "*Старый+*". Чем вам помочь?',
+    bot.send_message(message.chat.id, text='~~Пельменная~~ Справочная "*Старый+*". Чем вам помочь?',
                      parse_mode='markdown', reply_markup=markup)
 
 
@@ -505,12 +506,25 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'arthasnightmare':
         audiobooks.rasskaziki(call)
+    elif call.data == 'arnamdhelper':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
+        button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
+        button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
+        button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
+        markup.row(button1, button2, button3, button4)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'python':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Python:* '
                                                     '\n1) *pip install googletrans==3.1.0a0* - последняя версия '
                                                     'google-переводчика (она не устанавливается автоматически и не '
-                                                    'описана в документации google). ', parse_mode='markdown')
+                                                    'описана в документации google). ',
+                         parse_mode='markdown', reply_markup=markup)
     elif call.data == 'ubuntu':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Ubuntu:* '
                                                     '\nЕсли папка содержит защищённый от перезаписи контент '
                                                     'или какие-то команды выдают ошибку доступа - добавьте в '
@@ -523,21 +537,26 @@ def query_handler(call):
                                                     'указанного каталога с содержимым. '
                                                     '\n5) *rmdir /directory/* - удаление пустого каталога. '
                                                     '\n6) *df -h* - отображение дискового пространства с критерием '
-                                                    'использования памяти. ', parse_mode='markdown')
+                                                    'использования памяти. ',
+                         parse_mode='markdown', reply_markup=markup)
     elif call.data == 'git':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='Синхронизация *git* с данным удалённым репозиторием: '
                                                     '\n1) *git fetch* --> *git merge* - фетч проверяет изменения в '
                                                     'репозитории и закачивает их на сервер. Мердж - заменяет '
                                                     'текущие данные на те, что были закачены из git-репозитория. '
                                                     '\n2) *git pull* - форсированное обновление репозитория. '
                                                     '\nПервый способ безопаснее в вопросах потери данных. '
-                                                    'И он сработал, збс. ', parse_mode='markdown')
+                                                    'И он сработал, збс. ', parse_mode='markdown', reply_markup=markup)
     elif call.data == 'telegram':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Telegram:* '
-                                                    '\n1) @ username_to_id_bot - удали пробел между собакой '
-                                                    'и названием. Бот позволяет узнать свой ID '
+                                                    '\n1) *username_to_id_bot* - подставь собаку перед '
+                                                    'названием. Бот позволяет узнать свой ID '
                                                     'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
-                                                    'добавлять в чат. ', parse_mode='markdown')
+                                                    'добавлять в чат. ', parse_mode='markdown', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
