@@ -513,8 +513,8 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         markup.row(button1, button2, button3, button4)
-        bot.send_message(call.message.chat.id, text='~~Пельменная~~ Справочная "*Старый+*". Чем вам помочь?',
-                         parse_mode='MarkdownV2', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
+                         parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
