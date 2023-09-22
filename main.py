@@ -278,8 +278,8 @@ def query_handler(call):
         button1 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование ;)" (Beta)',
                                                      callback_data='funnyknut')
         button2 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
-        markup.row (button1)
-        markup.row (button2)
+        markup.row(button1)
+        markup.row(button2)
         bot.send_message(call.message.chat.id, 'Выберите игру: ', reply_markup=markup)
     elif call.data == 'funnyknut':
         bot.send_message(call.message.chat.id, 'Для игры в "Весёлое кнутирование" - нажмите /play!')
@@ -616,7 +616,7 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'ты лох':
         textcommand.get_text_messages(message)
-    elif message.text == 'Старый, улыбнись':
+    elif message.text == 'Похвалить Старого!':
         textcommand.get_text_messages(message)
 
 

@@ -72,6 +72,5 @@ def get_text_messages(message):
         bot.send_message(message.chat.id, 'МММММММММ!!! ММММММММММММММММММММММ!', reply_markup=markup)
     elif message.text == 'ты лох':
         bot.send_message(chat_id='-1001892218052', text='Запомните, твари: Я не сломаюсь..')
-    elif message.text == 'Старый, улыбнись':
-        bot.send_message(message.chat_id, text=';)')
-        bot.send_message(message.chat_id, text=phrases.digital_stariy)
+    elif message.text == 'Похвалить Старого!':
+        bot.send_message(message.chat.id, text=phrases.digital_stariy)
