@@ -625,6 +625,8 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'ты лох':
         textcommand.get_text_messages(message)
+    elif message.text == 'ты лох2':
+        textcommand.get_text_messages(message)
     elif message.text == 'Похвалить Старого!':
         textcommand.get_text_messages(message)
 
