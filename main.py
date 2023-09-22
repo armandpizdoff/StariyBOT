@@ -529,7 +529,7 @@ def query_handler(call):
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Python:* '
-                                                    '\n1) *pip install googletrans==3.1.0a0* - последняя версия '
+                                                    '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия '
                                                     'google-переводчика (она не устанавливается автоматически и не '
                                                     'описана в документации google). ',
                          parse_mode='markdown', reply_markup=markup)
@@ -537,7 +537,7 @@ def query_handler(call):
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Ubuntu:* '
-                                                    '\nЕсли папка содержит защищённый от перезаписи контент '
+                                                    '\n\nЕсли папка содержит защищённый от перезаписи контент '
                                                     'или какие-то команды выдают ошибку доступа - добавьте в '
                                                     'начало команды sudo - всегда помогает ;) '
                                                     '\n1) *adduser user* - создать нового пользователя. '
@@ -548,23 +548,32 @@ def query_handler(call):
                                                     'указанного каталога с содержимым. '
                                                     '\n5) *rmdir /directory/* - удаление пустого каталога. '
                                                     '\n6) *df -h* - отображение дискового пространства с критерием '
-                                                    'использования памяти. ',
+                                                    'использования памяти. '
+                                                    '\n7) *mv звёздочка ../* - перемещает файлы в текущем каталоге '
+                                                    'на уровень выше. '
+                                                    '\n8) *mv звёздочка.звёздочка ..* - перемещает ВСЕ ФАЙЛЫ в '
+                                                    'текущем каталоге на уровень выше (в т.ч. и скрытые).',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
-        bot.send_message(call.message.chat.id, text='Синхронизация *git* с данным удалённым репозиторием: '
+        bot.send_message(call.message.chat.id, text='*GIT:* '
+                                                    '\n\nСинхронизация *git* с данным удалённым репозиторием: '
                                                     '\n1) *git fetch* --> *git merge* - фетч проверяет изменения в '
                                                     'репозитории и закачивает их на сервер. Мердж - заменяет '
                                                     'текущие данные на те, что были закачены из git-репозитория. '
                                                     '\n2) *git pull* - форсированное обновление репозитория. '
                                                     '\nПервый способ безопаснее в вопросах потери данных. '
-                                                    'И он сработал, збс. ', parse_mode='markdown', reply_markup=markup)
+                                                    'И он сработал, збс. '
+                                                    '\n\nСоздание репозитория git-> сервер: '
+                                                    '\n*git clone git@github.com:your-nickname/your-project.git* '
+                                                    '- подставить свою УЗ и название репозитория.',
+                         parse_mode='markdown', reply_markup=markup)
     elif call.data == 'telegram':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='*Telegram:* '
-                                                    '\n1) *username_to_id_bot* - подставь собаку перед '
+                                                    '\n\n1) *username_to_id_bot* - подставь собаку перед '
                                                     'названием. Этот бот позволяет узнать свой ID '
                                                     'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
                                                     'добавлять в чат. ', parse_mode='markdown', reply_markup=markup)
