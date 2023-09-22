@@ -3,6 +3,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
+import phrases
 
 bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
@@ -71,3 +72,6 @@ def get_text_messages(message):
         bot.send_message(message.chat.id, 'МММММММММ!!! ММММММММММММММММММММММ!', reply_markup=markup)
     elif message.text == 'ты лох':
         bot.send_message(chat_id='-1001892218052', text='Запомните, твари: Я не сломаюсь..')
+    elif message.text == 'Старый, улыбнись':
+        bot.send_message(message.chat_id, text=';)')
+        bot.send_message(message.chat_id, text=phrases.digital_stariy)

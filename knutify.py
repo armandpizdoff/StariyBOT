@@ -47,7 +47,7 @@ def knutirovanie(call):
         markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='back'))
         bot.send_message(call.message.chat.id, text=':)')
         time.sleep(1)
-        bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.')
         time.sleep(1)
         bot.send_message(call.message.chat.id, text=phrases.digital_stariy, reply_markup=markup)
     elif call.data == 'junior':
