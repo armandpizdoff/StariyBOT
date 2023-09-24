@@ -629,8 +629,10 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'Похвалить Старого!':
         textcommand.get_text_messages(message)
+    elif message.text == 'айди':
+        bot.send_message(message.chat.id, text = message.chat.id)
     elif message.text == 'тест':
-        bot.send_photo(message.chat.id, file_id='AgACAgIAAxkBAAEWssFlD5Ba_zODDbPJ9kb8U07VDA94jQACwckxG730gUiSGAWcmALv5QEAAwIAA3gAAzAE')
+        bot.send_photo(message.chat.id, photo='AgACAgIAAxkBAAEWssFlD5Ba_zODDbPJ9kb8U07VDA94jQACwckxG730gUiSGAWcmALv5QEAAwIAA3gAAzAE')
 
 
 bot.polling(none_stop=True, interval=0)
