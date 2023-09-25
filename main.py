@@ -75,6 +75,11 @@ def armandhelper(message):
                      parse_mode='HTML', reply_markup=markup)
 
 
+@bot.message_handler(commands=['id_chat'])
+def armandhelper(message):
+    bot.send_message(message.chat.id, text='ID этого чата:' + message.chat.id)
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
@@ -629,8 +634,6 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'Похвалить Старого!':
         textcommand.get_text_messages(message)
-    elif message.text == 'айди':
-        bot.send_message(message.chat.id, text=message.chat.id)
     elif message.text == 'тест':
         bot.send_photo(message.chat.id, photo=open('AgACAgIAAxkBAAEWssFlD5Ba_zODDbPJ9kb8U07VDA94jQACwckxG730gUiSGAWcmALv5QEAAwIAA3gAAzAE', 'rb'))
 
