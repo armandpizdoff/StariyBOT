@@ -594,7 +594,8 @@ def query_handler(call):
                                                     '\n3) *./manage.py runserver* - запустить локальный сервер.'
                                                     '\n4) *./manage.py migrate* - миграция - запись изменений самой '
                                                     'структуры таблиц в БД.'
-                                                    '\n5) *./manage.py makemigrations* - пока хз, чёт не получается. '
+                                                    '\n5) *./manage.py makemigrations* - подготовить миграцию '
+                                                    'к заливанию на контур. '
                                                     '\n6) *./manage.py startapp app1* - создание блока приложений. '
                                                     'Вместо app1 подставить название вашего будущего приложения. '
                          , parse_mode='markdown', reply_markup=markup)
