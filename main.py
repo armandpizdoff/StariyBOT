@@ -70,7 +70,8 @@ def armandhelper(message):
     button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
-    markup.row(button1, button2, button3, button4)
+    button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
+    markup.row(button1, button2, button3, button4, button5)
     bot.send_message(message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
 
@@ -527,7 +528,8 @@ def query_handler(call):
         button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
         button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
-        markup.row(button1, button2, button3, button4)
+        button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
+        markup.row(button1, button2, button3, button4, button5)
         bot.send_message(call.message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
@@ -582,6 +584,20 @@ def query_handler(call):
                                                     'названием. Этот бот позволяет узнать свой ID '
                                                     'или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО '
                                                     'добавлять в чат. ', parse_mode='markdown', reply_markup=markup)
+    elif call.data == 'django':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
+        bot.send_message(call.message.chat.id, text='*django:* '
+                                                    '\n\n1) *./manage.py* - ваш друг и товарищ. Почти любые '
+                                                    'операции нужно производить, находясь в одном каталоге с менеджем.'
+                                                    '\n2) *./manage.py createsuperuser* - создать админку на ресурсе.'
+                                                    '\n3) *./manage.py runserver* - запустить локальный сервер.'
+                                                    '\n4) *./manage.py migrate* - миграция - запись изменений самой '
+                                                    'структуры таблиц в БД.'
+                                                    '\n5) *./manage.py makemigrations* - пока хз, чёт не получается. '
+                                                    '\n6) *./manage.py startapp app1* - создание блока приложений. '
+                                                    'Вместо app1 подставить название вашего будущего приложения. '
+                         , parse_mode='markdown', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
