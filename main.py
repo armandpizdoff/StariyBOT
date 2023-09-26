@@ -587,7 +587,7 @@ def query_handler(call):
     elif call.data == 'django':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
-        bot.send_message(call.message.chat.id, text='*django:* '
+        bot.send_message(call.message.chat.id, text='*Django:* '
                                                     '\n\n1) *./manage.py* - ваш друг и товарищ. Почти любые '
                                                     'операции нужно производить, находясь в одном каталоге с менеджем.'
                                                     '\n2) *./manage.py createsuperuser* - создать админку на ресурсе.'
