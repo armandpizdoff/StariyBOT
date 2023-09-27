@@ -542,14 +542,26 @@ def query_handler(call):
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'ubuntu':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
-        bot.send_message(call.message.chat.id, text='<b>Ubuntu: </b> '
-                                                    '\n\n<b>Работа с пользователями: </b>'
+        button1 = telebot.types.InlineKeyboardButton(text='Пользователи/роли', callback_data='ubuntu1')
+        button2 = telebot.types.InlineKeyboardButton(text='Команды и навигация', callback_data='ubuntu2')
+        button3 = telebot.types.InlineKeyboardButton(text='Горячие клавиши', callback_data='ubuntu3')
+        button4 = telebot.types.InlineKeyboardButton(text='Полезные примечания', callback_data='ubuntu4')
+        button5 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='armandhelper')
+        markup.row(button1, button2)
+        markup.row(button3, button4)
+        markup.row(button5)
+    elif call.data == 'ubuntu1':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
+        bot.send_message(call.message.chat.id, text='<b>Работа с пользователями: </b>'
                                                     '\n1) <b>adduser user</b> - создать нового пользователя. '
                                                     '\n2) <b>usermod -aG sudo user</b> - наделить его полномочиями. '
                                                     '\n3) <b>su user</b> - переключение на другого пользователя '
                                                     'без перезахода на сервер. ',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'ubuntu2':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id, text='<b>Команды навигации и манипуляторы: </b>'
                                                     '\n1) <b>rm -R /home/user/directory/</b> - рекурсивное удаление '
                                                     'указанного каталога с содержимым. '
@@ -561,10 +573,16 @@ def query_handler(call):
                                                     '\n5) <b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в '
                                                     'текущем каталоге на уровень выше (в т.ч. и скрытые).',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'ubuntu3':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id, text='<b>Terminal HotKeys: </b>'
                                                     '\n1) <b>ctrl + L</b> - очистить экран терминала. '
                                                     '\n2) <b>ctrl + C</b> - прервать операцию. ',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'ubuntu4':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id, text='<b>Полезные примечания: </b>'
                                                     '\n1) Если папка содержит защищённый от перезаписи контент '
                                                     'или какие-то команды выдают ошибку доступа - добавьте в '
