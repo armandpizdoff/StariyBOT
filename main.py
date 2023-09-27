@@ -605,8 +605,8 @@ def query_handler(call):
                                                     '\n5) *./manage.py makemigrations* - подготовить миграцию '
                                                     'к заливанию на контур. '
                                                     '\n6) *./manage.py startapp app1* - создание блока приложений. '
-                                                    'Вместо app1 подставить название вашего будущего приложения. '
-                         , parse_mode='markdown', reply_markup=markup)
+                                                    'Вместо app1 подставить название вашего будущего приложения. ',
+                         parse_mode='markdown', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
