@@ -522,7 +522,7 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'arthasnightmare':
         audiobooks.rasskaziki(call)
-    elif call.data == 'arnamdhelper':
+    elif call.data == 'armandhelper':
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
         button2 = telebot.types.InlineKeyboardButton(text='Ubuntu', callback_data='ubuntu')
@@ -534,7 +534,7 @@ def query_handler(call):
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
         bot.send_message(call.message.chat.id, text='*Python:* '
                                                     '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия '
                                                     'google-переводчика (она не устанавливается автоматически и не '
@@ -593,7 +593,7 @@ def query_handler(call):
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
         bot.send_message(call.message.chat.id, text='*GIT:* '
                                                     '\n\nСинхронизация *git* с данным удалённым репозиторием: '
                                                     '\n1) *git fetch* --> *git merge* - фетч проверяет изменения в '
@@ -608,7 +608,7 @@ def query_handler(call):
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'telegram':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
         bot.send_message(call.message.chat.id, text='*Telegram:* '
                                                     '\n\n1) *username_to_id_bot* - подставь собаку перед '
                                                     'названием. Этот бот позволяет узнать свой ID '
@@ -616,7 +616,7 @@ def query_handler(call):
                                                     'добавлять в чат. ', parse_mode='markdown', reply_markup=markup)
     elif call.data == 'django':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
         bot.send_message(call.message.chat.id, text='*Django:* '
                                                     '\n\n1) *./manage.py* - ваш друг и товарищ. Почти любые '
                                                     'операции нужно производить, находясь в одном каталоге с менеджем.'
