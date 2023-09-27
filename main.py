@@ -543,24 +543,32 @@ def query_handler(call):
     elif call.data == 'ubuntu':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
-        bot.send_message(call.message.chat.id, text='*Ubuntu:* '
-                                                    '\n\nЕсли папка содержит защищённый от перезаписи контент '
+        bot.send_message(call.message.chat.id, text='<b>Ubuntu: </b> '
+                                                    '\n\n <b>Работа с пользователями: </b>'
+                                                    '\n1) <b>adduser user</b> - создать нового пользователя. '
+                                                    '\n2) <b>usermod -aG sudo user</b> - наделить его полномочиями. '
+                                                    '\n3) <b>su user</b> - переключение на другого пользователя '
+                                                    'без перезахода на сервер. '
+                                                    '\n\n Команды навигации и манипуляторы: '
+                                                    '\n1) <b>rm -R /home/user/directory/</b> - рекурсивное удаление '
+                                                    'указанного каталога с содержимым. '
+                                                    '\n2) <b>rmdir /directory/</b> - удаление пустого каталога. '
+                                                    '\n3) <b>df -h</b> - отображение дискового пространства с '
+                                                    'критерием использования памяти. '
+                                                    '\n4) <b>mv * ../</b> - перемещает файлы в текущем '
+                                                    'каталоге на уровень выше. '
+                                                    '\n5) <b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в '
+                                                    'текущем каталоге на уровень выше (в т.ч. и скрытые).'
+                                                    '\n\n</b>Terminal HotKeys: </b>'
+                                                    '\n1) <b>ctrl + L</b> - очистить экран терминала. '
+                                                    '\n2) <b>ctrl + C</b> - прервать операцию. '
+                                                    '\n\n <b>Полезные примечания: </b>'
+                                                    '\n1) Если папка содержит защищённый от перезаписи контент '
                                                     'или какие-то команды выдают ошибку доступа - добавьте в '
                                                     'начало команды sudo - всегда помогает ;) '
-                                                    '\n1) *adduser user* - создать нового пользователя. '
-                                                    '\n2) *usermod -aG sudo user* - наделить его полномочиями. '
-                                                    '\n3) *su user* - переключение на другого пользователя '
-                                                    'без перезахода на сервер. '
-                                                    '\n4) *rm -R /home/user/directory/* - рекурсивное удаление '
-                                                    'указанного каталога с содержимым. '
-                                                    '\n5) *rmdir /directory/* - удаление пустого каталога. '
-                                                    '\n6) *df -h* - отображение дискового пространства с критерием '
-                                                    'использования памяти. '
-                                                    '\n7) *mv звёздочка ../* - перемещает файлы в текущем каталоге '
-                                                    'на уровень выше. '
-                                                    '\n8) *mv звёздочка.звёздочка ..* - перемещает ВСЕ ФАЙЛЫ в '
-                                                    'текущем каталоге на уровень выше (в т.ч. и скрытые).',
-                         parse_mode='markdown', reply_markup=markup)
+                                                    '\n2) <b>..</b> - каталог на уровень выше. '
+                                                    '\n3) <b>.</b> - текущий каталог. ',
+                         parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
