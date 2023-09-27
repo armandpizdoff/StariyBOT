@@ -544,12 +544,13 @@ def query_handler(call):
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='arnamdhelper'))
         bot.send_message(call.message.chat.id, text='<b>Ubuntu: </b> '
-                                                    '\n\n <b>Работа с пользователями: </b>'
+                                                    '\n\n<b>Работа с пользователями: </b>'
                                                     '\n1) <b>adduser user</b> - создать нового пользователя. '
                                                     '\n2) <b>usermod -aG sudo user</b> - наделить его полномочиями. '
                                                     '\n3) <b>su user</b> - переключение на другого пользователя '
-                                                    'без перезахода на сервер. '
-                                                    '\n\n Команды навигации и манипуляторы: '
+                                                    'без перезахода на сервер. ',
+                         parse_mode='HTML', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='<b>Команды навигации и манипуляторы: <b>'
                                                     '\n1) <b>rm -R /home/user/directory/</b> - рекурсивное удаление '
                                                     'указанного каталога с содержимым. '
                                                     '\n2) <b>rmdir /directory/</b> - удаление пустого каталога. '
@@ -562,8 +563,9 @@ def query_handler(call):
                          parse_mode='HTML', reply_markup=markup)
         bot.send_message(call.message.chat.id, text='</b>Terminal HotKeys: </b>'
                                                     '\n1) <b>ctrl + L</b> - очистить экран терминала. '
-                                                    '\n2) <b>ctrl + C</b> - прервать операцию. '
-                                                    '\n\n <b>Полезные примечания: </b>'
+                                                    '\n2) <b>ctrl + C</b> - прервать операцию. ',
+                         parse_mode='HTML', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='<b>Полезные примечания: </b>'
                                                     '\n1) Если папка содержит защищённый от перезаписи контент '
                                                     'или какие-то команды выдают ошибку доступа - добавьте в '
                                                     'начало команды sudo - всегда помогает ;) '
