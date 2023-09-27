@@ -607,7 +607,7 @@ def query_handler(call):
                                                     '\n6) <b>cat /proc/cpuinfo</b> - показать информацию о процессоре. '
                                                     '\n7) <b>cat /proc/meminfo</b> - показать информацию о RAM. '
                                                     '\n8) <b>free -h</b> - краткая сводка по RAM. '
-                                                    '\n9) <b>top</b> - сводка потребления памяти, CPU - kind of '
+                                                    '\n9) <b>top</b> - сводка потребления памяти и CPU. Kind of '
                                                     'диспетчер задач ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
