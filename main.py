@@ -550,6 +550,7 @@ def query_handler(call):
         markup.row(button1, button2)
         markup.row(button3, button4)
         markup.row(button5)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'ubuntu1':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
