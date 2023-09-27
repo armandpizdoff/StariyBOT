@@ -558,8 +558,9 @@ def query_handler(call):
                                                     '\n4) <b>mv * ../</b> - перемещает файлы в текущем '
                                                     'каталоге на уровень выше. '
                                                     '\n5) <b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в '
-                                                    'текущем каталоге на уровень выше (в т.ч. и скрытые).'
-                                                    '\n\n</b>Terminal HotKeys: </b>'
+                                                    'текущем каталоге на уровень выше (в т.ч. и скрытые).',
+                         parse_mode='HTML', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='</b>Terminal HotKeys: </b>'
                                                     '\n1) <b>ctrl + L</b> - очистить экран терминала. '
                                                     '\n2) <b>ctrl + C</b> - прервать операцию. '
                                                     '\n\n <b>Полезные примечания: </b>'
