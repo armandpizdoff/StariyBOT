@@ -610,7 +610,8 @@ def query_handler(call):
                                                     '\n7) <b>cat /proc/meminfo</b> - показать информацию о RAM. '
                                                     '\n8) <b>free -h</b> - краткая сводка по RAM. '
                                                     '\n9) <b>top</b> - сводка потребления памяти и CPU. Kind of '
-                                                    'диспетчер задач ',
+                                                    'диспетчер задач '
+                                                    '\n10) <b>ifconfig</b> - покажет сетевые интерфейсы на сервере. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
