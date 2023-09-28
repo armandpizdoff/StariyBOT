@@ -71,7 +71,9 @@ def armandhelper(message):
     button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
-    markup.row(button1, button2, button3, button4, button5)
+    button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
+    markup.row(button1, button2, button3)
+    markup.row(button4, button5, button6)
     bot.send_message(message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
 
@@ -532,7 +534,8 @@ def query_handler(call):
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
         button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
-        markup.row(button1, button2, button3, button4, button5, button6)
+        markup.row(button1, button2, button3)
+        markup.row(button4, button5, button6)
         bot.send_message(call.message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
@@ -663,13 +666,13 @@ def query_handler(call):
     elif call.data == 'vim':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
-        bot.send_message(call.message.chat.id, text='*VIM:* '
-                                                    '\n\nВнутри редактора все команды начинаются с ":"! Забудешь '
-                                                    'этот факт - навеки останешься в ловушке Джокера. А закроешь '
-                                                    'сервер - КРИТИЧЕСКАЯ ОШИБКА ПРИ ЗАКРЫТИИ БУДЕТ ПРЕСЛЕДОВАТЬ '
-                                                    'ТЕБЯ ВЕЧНОСТЬ. '
-                                                    '\n <b>:q</b> - выход из редактора. ',
-                         parse_mode='markdown', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='<b>VIM:</b> '
+                                                    '\n\nВнутри редактора все команды начинаются с "<b>:</b>"! '
+                                                    'Забудешь этот факт - навеки останешься в ловушке Джокера. '
+                                                    'А закроешь сервер - КРИТИЧЕСКАЯ ОШИБКА ПРИ ЗАКРЫТИИ '
+                                                    'БУДЕТ ПРЕСЛЕДОВАТЬ ТЕБЯ ВЕЧНОСТЬ! '
+                                                    '\n\n<b>:q</b> - выход из редактора. ',
+                         parse_mode='HTML', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
