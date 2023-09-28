@@ -584,14 +584,17 @@ def query_handler(call):
                                                     'непустого каталога. '
                                                     '\n9) <b>cat file.txt</b> - открыть текстовый файл. '
                                                     '\n10) <b>tail -4 file.txt</b> - показать указанное '
-                                                    'число последних записей в файле',
+                                                    'число последних записей в файле. '
+                                                    '\n11) <b>nslookup *адрес*</b> - запрос на ДНС-сервер о резолве '
+                                                    'того или иного адреса. Можно узнать IP ресурса. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu3':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id, text='<b>Terminal HotKeys: </b>'
                                                     '\n1) <b>ctrl + L</b> - очистить экран терминала. '
-                                                    '\n2) <b>ctrl + C</b> - прервать операцию. ',
+                                                    '\n2) <b>ctrl + C</b> - прервать операцию. '
+                                                    '\n3) <b>ctrl + ]</b> - выход из консоли телнета. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu4':
         markup = telebot.types.InlineKeyboardMarkup()
