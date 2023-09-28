@@ -594,7 +594,8 @@ def query_handler(call):
         bot.send_message(call.message.chat.id, text='<b>Terminal HotKeys: </b>'
                                                     '\n1) <b>ctrl + L</b> - очистить экран терминала. '
                                                     '\n2) <b>ctrl + C</b> - прервать операцию. '
-                                                    '\n3) <b>ctrl + ]</b> - выход из консоли телнета. ',
+                                                    '\n3) <b>ctrl + ]</b> - выход из консоли телнета. '
+                                                    '\n4) <b>ctrl + D</b> - exit. Возврат в консоль Linux. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu4':
         markup = telebot.types.InlineKeyboardMarkup()
