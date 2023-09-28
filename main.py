@@ -245,7 +245,7 @@ def query_handler(call):
         button1 = telebot.types.InlineKeyboardButton(text='Всратые звуки❗', callback_data='sounds')
         button2 = telebot.types.InlineKeyboardButton(text='Карусель Желаний', callback_data='carouselwishes')
         button3 = telebot.types.InlineKeyboardButton(text='Рубрика "Весёлые Нигеры"', callback_data='carouselniggers')
-        button4 = telebot.types.InlineKeyboardButton(text='Различные рассказики', callback_data='stories')
+        button4 = telebot.types.InlineKeyboardButton(text='Аудиокниги', callback_data='stories')
         button5 = telebot.types.InlineKeyboardButton(text='Сочные тёлки🐄', callback_data='cow')
         button6 = telebot.types.InlineKeyboardButton(text='Юмор', callback_data='joke')
         button7 = telebot.types.InlineKeyboardButton(text='Игры🎮', callback_data='game')
@@ -521,6 +521,8 @@ def query_handler(call):
     elif call.data == 'opera3':
         audiobooks.rasskaziki(call)
     elif call.data == 'arthasnightmare':
+        audiobooks.rasskaziki(call)
+    elif call.data == 'ordersong':
         audiobooks.rasskaziki(call)
     elif call.data == 'armandhelper':
         markup = telebot.types.InlineKeyboardMarkup()
