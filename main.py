@@ -531,7 +531,8 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='GIT', callback_data='git')
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
-        markup.row(button1, button2, button3, button4, button5)
+        button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
+        markup.row(button1, button2, button3, button4, button5, button6)
         bot.send_message(call.message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
@@ -586,7 +587,9 @@ def query_handler(call):
                                                     '\n10) <b>tail -4 file.txt</b> - показать указанное '
                                                     'число последних записей в файле. '
                                                     '\n11) <b>nslookup *адрес*</b> - запрос на ДНС-сервер о резолве '
-                                                    'того или иного адреса. Можно узнать IP ресурса. ',
+                                                    'того или иного адреса. Можно узнать IP ресурса. '
+                                                    '\n12) <b>apt install имя_программы</b> - установка программы. '
+                                                    '\n13) <b>apt remove имя_программы</b> - удаление программы. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu3':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -615,7 +618,9 @@ def query_handler(call):
                                                     '\n8) <b>free -h</b> - краткая сводка по RAM. '
                                                     '\n9) <b>top</b> - сводка потребления памяти и CPU. Kind of '
                                                     'диспетчер задач '
-                                                    '\n10) <b>ifconfig</b> - покажет сетевые интерфейсы на сервере. ',
+                                                    '\n10) <b>ifconfig</b> - покажет сетевые интерфейсы на сервере. '
+                                                    '\n11) <b>nmap example.com</b> - прога покажет открытые порты '
+                                                    'у ресурса. Требует предварительной установки apt. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -654,6 +659,16 @@ def query_handler(call):
                                                     'к заливанию на контур. '
                                                     '\n6) *./manage.py startapp app1* - создание блока приложений. '
                                                     'Вместо app1 подставить название вашего будущего приложения. ',
+                         parse_mode='markdown', reply_markup=markup)
+    elif call.data == 'vim':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
+        bot.send_message(call.message.chat.id, text='*VIM:* '
+                                                    '\n\nВнутри редактора все команды начинаются с ":"! Забудешь '
+                                                    'этот факт - навеки останешься в ловушке Джокера. А закроешь '
+                                                    'сервер - КРИТИЧЕСКАЯ ОШИБКА ПРИ ЗАКРЫТИИ БУДЕТ ПРЕСЛЕДОВАТЬ '
+                                                    'ТЕБЯ ВЕЧНОСТЬ. '
+                                                    '\n <b>:q</b> - выход из редактора. ',
                          parse_mode='markdown', reply_markup=markup)
 
 
