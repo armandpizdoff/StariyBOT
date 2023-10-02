@@ -72,7 +72,8 @@ def armandhelper(message):
     button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
     button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
     button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
-    markup.row(button1, button2, button3)
+    button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
+    markup.row(button1, button2, button3, button7)
     markup.row(button4, button5, button6)
     bot.send_message(message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
@@ -534,7 +535,8 @@ def query_handler(call):
         button4 = telebot.types.InlineKeyboardButton(text='Telegram', callback_data='telegram')
         button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
         button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
-        markup.row(button1, button2, button3)
+        button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
+        markup.row(button1, button2, button3, button7)
         markup.row(button4, button5, button6)
         bot.send_message(call.message.chat.id, text='<s>Пельменная</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
@@ -683,6 +685,15 @@ def query_handler(call):
                                                     '\n<b>yy</b> - Горячая клавиша. Двойное нажатие на "y" копирует '
                                                     'выбранную строку. '
                                                     '\n <b>p<b> - Горячая клавиша. Вставляет скопированную строку. ',
+                         parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'pg':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='armandhelper'))
+        bot.send_message(call.message.chat.id, text='<b>PostgreSQL:</b> '
+                                                    '\n\n<b>sudo -u postgres psql</b> - вход в интерактивный '
+                                                    'интерфейс PG под пользователем "Postgres". Он создался вместе '
+                                                    'с установкой БД. Так принято, так надо. '
+                                                    '\n<b>\q</b> - выход из консоли БД PG. ',
                          parse_mode='HTML', reply_markup=markup)
 
 
