@@ -693,7 +693,24 @@ def query_handler(call):
                                                     '\n\n<b>sudo -u postgres psql</b> - вход в интерактивный '
                                                     'интерфейс PG под пользователем "Postgres". Он создался вместе '
                                                     'с установкой БД. Так принято, так надо. '
-                                                    '\n<b>\q</b> - выход из консоли БД PG. ',
+                                                    '\n<b>\q</b> - выход из консоли БД PG. '
+                                                    '\n<b>CREATE DATABASE "myproject";</b> - Создать БД. Убрать '
+                                                    'кавычки, название подставить своё. '
+                                                    '\n<b>CREATE USER myprojectuser WITH PASSWORD \'password\';</b> - '
+                                                    'создать пользователя в базе. Логин и пароль вставьте желаемые. '
+                                                    '\n<b>ALTER ROLE myprojectuser SET client_encoding '
+                                                    'TO \'utf8\';</b> - задать кодирову по умолчанию в БД - UTF-8'
+                                                    '\n<b>ALTER ROLE myprojectuser SET default_transaction_isolation '
+                                                    'TO \'read committed\';</b> - ограничивает чтение со стороны '
+                                                    'неподтверждённых транзакций. Я хз что это пока что :)'
+                                                    '\n<b>ALTER ROLE myprojectuser SET timezone TO \'UTC\'</b>; - '
+                                                    'установить часовой пояс +0 (UTC). Это наверное хороший тон, я хз.'
+                                                    '\n<b>GRANT ALL PRIVILEGES ON DATABASE myproject TO '
+                                                    'myprojectuser;</b> - передать все права на администрирование '
+                                                    'выбранной БД выбранному пользователю. Заменить myproject и '
+                                                    'myprojectuser на свои данные. '
+                                                    '\n\nВсе команды внутри консоли PG должны заканчиваться знаком '
+                                                    '<b>;</b>!',
                          parse_mode='HTML', reply_markup=markup)
 
 
