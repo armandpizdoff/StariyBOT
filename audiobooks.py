@@ -21,16 +21,17 @@ def rasskaziki(call):
         button7 = telebot.types.InlineKeyboardButton(text='Презентация Утэра', callback_data='utherdevelopment')
         button8 = telebot.types.InlineKeyboardButton(text='Кошмар Артаса', callback_data='arthasnightmare')
         button9 = telebot.types.InlineKeyboardButton(text='Новый заказ королевства', callback_data='ordersong')
-        button10 = telebot.types.InlineKeyboardButton(text='Опера "Повесть о грустном Апполо"',
+        button10 = telebot.types.InlineKeyboardButton(text='Счастливое Рождество', callback_data='merrychristmas')
+        button11 = telebot.types.InlineKeyboardButton(text='Опера "Повесть о грустном Апполо"',
                                                       callback_data='operaall')
-        button11 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
-        markup.row(button1, button2)
+        button12 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
+        markup.row(button1, button2, button5)
         markup.row(button3, button4)
-        markup.row(button5, button6)
+        markup.row(button10, button6)
         markup.row(button7, button8)
         markup.row(button9)
-        markup.row(button10)
         markup.row(button11)
+        markup.row(button12)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'uthermarriage':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -181,4 +182,3 @@ def rasskaziki(call):
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas4.ogg', 'rb'))
         time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas5.ogg', 'rb'), reply_markup=markup)
-
