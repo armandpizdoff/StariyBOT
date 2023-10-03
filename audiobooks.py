@@ -168,3 +168,17 @@ def rasskaziki(call):
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'ordersong4.ogg', 'rb'))
         time.sleep(1)
         bot.send_audio(call.message.chat.id, audio=open(STORIES + 'ordersong5.ogg', 'rb'), reply_markup=markup)
+    elif call.data == 'merrychristmas':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text='Назад к аудиокнигам', callback_data='stories'))
+        bot.send_chat_action(call.message.chat.id, 'upload_audio')
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas1.ogg', 'rb'))
+        time.sleep(1)
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas2.ogg', 'rb'))
+        time.sleep(1)
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas3.ogg', 'rb'))
+        time.sleep(1)
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas4.ogg', 'rb'))
+        time.sleep(1)
+        bot.send_audio(call.message.chat.id, audio=open(STORIES + 'merrychristmas5.ogg', 'rb'), reply_markup=markup)
+

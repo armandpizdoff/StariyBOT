@@ -510,6 +510,8 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'ordersong':
         audiobooks.rasskaziki(call)
+    elif call.data == 'merrychristmas':
+        audiobooks.rasskaziki(call)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
