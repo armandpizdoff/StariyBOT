@@ -7,6 +7,10 @@ import audiobooks
 import knutify
 import textcommand
 import jokes
+import psycopg2
+
+from database import DatBase
+from aiogram.dispatcher import Dispatcher
 
 # import logging
 from dotenv import load_dotenv
@@ -41,11 +45,21 @@ COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
 bot = telebot.TeleBot(TOKEN)
+db = DatBase()
+dp = Dispatcher(bot, storage=MemoryStorage())
+
 # logging.debug("A DEBUG Message")
 # logging.info("An INFO")
 # logging.warning("A WARNING")
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
+
+
+class whippers:
+    def __init__(self):
+        first_name = State()
+        second_name = State()
+        whipper_count = State()
 
 
 @bot.message_handler(commands=['help'])
