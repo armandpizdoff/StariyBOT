@@ -21,6 +21,8 @@ from dotenv import load_dotenv
 # from datetime import datetime, timedelta
 # import requests - для парсинга шуток с сайтов
 # from bs4 import BeautifulSoup - для парсинга данных с сайтов
+# from telebot import types
+# from keyboard import keyboard
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -55,23 +57,18 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
-    bot.send_message(message.chat.id, text='*Список быстрых команд:* '
-                                           '\n/start - получить спектр услуг. '
-                                           '\n/help - засуммонить помощь. '
-                                           '\n/music - сделать меня томадой. '
-                                           '\n\n*Список печатных команд:* '
-                                           '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
-                                           '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
-                                           '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
-                                           '\nскрытое отхлищивание... - кнутирование 4-го уровня. '
-                                           '\n\nЕсли вводите команду вручную - '
-                                           'соблюдайте регистр. '.format(message.from_user, bot.get_me()),
-                     parse_mode='markdown')
-
-
-@bot.message_handler(commands=['id_chat'])
-def armandhelper(message):
-    bot.send_message(message.chat.id, text=message.chat.id)
+    bot.send_message(message.chat.id,
+                     '*Список быстрых команд:* '
+                     '\n/start - получить спектр услуг. '
+                     '\n/help - получить помощь сил *Свыше*. '
+                     '\n/knut - отхлищеть меня. '
+                     '\n/music - сделать меня томадой. '
+                     '\n\n*Список печатных команд:* '
+                     '\nкнут - пожалуйста не надо, Господин {0.first_name}! '
+                     '\nмузыка - сделайте меня томадой, мистер {0.first_name}. '
+                     '\nпокажи Путина - чтобы я привёл Вам перзидента Роисии. '
+                     '\n\n_Если вводите команду вручную - '
+                     'соблюдайте регистр._ '.format(message.from_user, bot.get_me()), parse_mode='markdown')
 
 
 @bot.message_handler(commands=['start'])
@@ -82,20 +79,28 @@ def start_message(message):
     button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
     button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
     button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-    button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (в разработке)', url='http://onlynotcrankshaft.ru')
-    button7 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
+    button6 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
     markup.row(button1, button2)
     markup.row(button3, button4, button5)
     markup.row(button6)
-    markup.row(button7)
-    bot.send_message(message.chat.id, text='*Здравствуйте, Космический Директор Архангел {0.first_name}!'
+    bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, мой Космический Директор Архангел!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
                                            '\nЯ очень не люблю круговое обоссывание. '
                                            '\nЧтобы использовать меня в своих личных целях, '
                                            'выберите интересующий раздел меню'.format(message.from_user, bot.get_me()),
                      parse_mode='markdown', reply_markup=markup)
+
+
 # .format(message.chat.id)
 
+@bot.message_handler(commands=['register'])
+def register(message):
+    database.register(message)
+
+
+@bot.message_handler(commands=['knut'])
+def textknut(message):
+    knutify.text_knutirovanie(message)
 
 
 @bot.message_handler(commands=['play'])
@@ -239,19 +244,17 @@ def query_handler(call):
         button1 = telebot.types.InlineKeyboardButton(text='Всратые звуки❗', callback_data='sounds')
         button2 = telebot.types.InlineKeyboardButton(text='Карусель Желаний', callback_data='carouselwishes')
         button3 = telebot.types.InlineKeyboardButton(text='Рубрика "Весёлые Нигеры"', callback_data='carouselniggers')
-        button4 = telebot.types.InlineKeyboardButton(text='Аудиокниги', callback_data='stories')
+        button4 = telebot.types.InlineKeyboardButton(text='Различные рассказики', callback_data='stories')
         button5 = telebot.types.InlineKeyboardButton(text='Сочные тёлки🐄', callback_data='cow')
         button6 = telebot.types.InlineKeyboardButton(text='Юмор', callback_data='joke')
-        button7 = telebot.types.InlineKeyboardButton(text='Игры🎮', callback_data='game')
-        button8 = telebot.types.InlineKeyboardButton(text='TV📺', url='https://www.glaz.tv/online-tv/')
-        button9 = telebot.types.InlineKeyboardButton(text='Постоянно улучшаемая картинка✏', callback_data='better')
-        button10 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='back')
+        button7 = telebot.types.InlineKeyboardButton(text='TV📺', url='https://www.glaz.tv/online-tv/')
+        button8 = telebot.types.InlineKeyboardButton(text='Постоянно улучшаемая картинка✏', callback_data='better')
+        button9 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='back')
         markup.row(button1, button2)
         markup.row(button3, button4)
-        markup.row(button5)
-        markup.row(button6, button7, button8)
+        markup.row(button5, button6, button7)
+        markup.row(button8)
         markup.row(button9)
-        markup.row(button10)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'cancel':
         bot.send_photo(call.message.chat.id, photo=open(PIC + 'okay.jpg', "rb"))
@@ -263,26 +266,15 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
         button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
         button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-        button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (в разработке)',
-                                                     url='http://onlynotcrankshaft.ru')
-        button7 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
+        button6 = telebot.types.InlineKeyboardButton(text="Закрыть🚫", callback_data='cancel')
         markup.row(button1, button2)
         markup.row(button3, button4, button5)
         markup.row(button6)
-        markup.row(button7)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'knut':
         knutify.knutirovanie(call)
     elif call.data == 'game':
-        markup = telebot.types.InlineKeyboardMarkup()
-        button1 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование ;)" (Beta)',
-                                                     callback_data='funnyknut')
-        button2 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='main menu')
-        markup.row(button1)
-        markup.row(button2)
-        bot.send_message(call.message.chat.id, 'Выберите игру: ', reply_markup=markup)
-    elif call.data == 'funnyknut':
-        bot.send_message(call.message.chat.id, 'Для игры в "Весёлое кнутирование" - нажмите /play!')
+        bot.send_message(call.message.chat.id, 'Если вы хотите, чтобы я придумал игру - используйте /play!')
     elif call.data == 'clarify':
         knutify.knutirovanie(call)
     elif call.data == 'obossali':
@@ -515,12 +507,6 @@ def query_handler(call):
         audiobooks.rasskaziki(call)
     elif call.data == 'opera3':
         audiobooks.rasskaziki(call)
-    elif call.data == 'arthasnightmare':
-        audiobooks.rasskaziki(call)
-    elif call.data == 'ordersong':
-        audiobooks.rasskaziki(call)
-    elif call.data == 'merrychristmas':
-        audiobooks.rasskaziki(call)
 
 
 @bot.message_handler(func=lambda message: 'кнут' in message.text.lower(), content_types=['text'])
@@ -567,14 +553,6 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'скрытое отхлищивание...':
         textcommand.get_text_messages(message)
-    elif message.text == 'ты лох':
-        textcommand.get_text_messages(message)
-    elif message.text == 'ты лох2':
-        textcommand.get_text_messages(message)
-    elif message.text == 'Похвалить Старого!':
-        textcommand.get_text_messages(message)
-    elif message.text == 'тест':
-        bot.send_photo(message.chat.id, photo=open('AgACAgIAAxkBAAEWssFlD5Ba_zODDbPJ9kb8U07VDA94jQACwckxG730gUiSGAWcmALv5QEAAwIAA3gAAzAE', 'rb'))
 
 
 bot.polling(none_stop=True, interval=0)
