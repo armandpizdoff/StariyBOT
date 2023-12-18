@@ -2,7 +2,9 @@ import telebot
 import random
 import os
 import time
+import phrases
 from dotenv import load_dotenv
+
 
 bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
@@ -16,13 +18,13 @@ def knutirovanie(call):
         button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
         button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
         button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
-        button4 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
-        button5 = telebot.types.InlineKeyboardButton(text='Игра "Весёлое кнутирование" ;) (Beta)', callback_data='game')
+        button4 = telebot.types.InlineKeyboardButton(text='👨‍🦼👨‍🦼Кнутирование 4-го уровня👨‍🦼👨‍🦼',
+                                                     callback_data='senior2')
+        button5 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
         button6 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
         markup.row(button1, button2, button3)
         markup.row(button4)
-        markup.row(button5)
-        markup.row(button6)
+        markup.row(button5, button6)
         bot.send_message(call.message.chat.id, text='Пожалуйста, выберите тип кнутирования:', reply_markup=markup)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
     elif call.data == 'clarify':
@@ -46,7 +48,9 @@ def knutirovanie(call):
         markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='back'))
         bot.send_message(call.message.chat.id, text=':)')
         time.sleep(1)
-        bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.', reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='Вы пощадили Старого... на этот раз.')
+        time.sleep(1)
+        bot.send_message(call.message.chat.id, text=phrases.digital_stariy, reply_markup=markup)
     elif call.data == 'junior':
         bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
     elif call.data == 'middle':
@@ -92,7 +96,7 @@ def knutirovanie(call):
                                   'Кто-нибудь, подберите мою скальп!!! '])
         rscream4 = random.choice(['АРХГХРХХХХ ', 'СЭР! ОНО НЕ ВЛЕЗАЕТ МНЕ В АНАЛ! ',
                                   'КНУТ РАССЁК МОЁ ПРАВОЕ ЯИЦО! ААА! ', 'Нет, я не носил парик! Моя Скальп!!! '])
-        bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, так нечестно! Мы же договаривались! '
+        bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, СЖАЛЬТЕСЬ! Только не снова! '
                                                '\nОЙ! Остановитесь! Умоляю, не нужно!'
                          .format(call.from_user, bot.get_me()))
         time.sleep(2)
@@ -107,16 +111,3 @@ def knutirovanie(call):
         rimage2 = random.choice(os.listdir(CRUEL))
         bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
         bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
-
-
-def text_knutirovanie(message):
-    markup = telebot.types.InlineKeyboardMarkup()
-    button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
-    button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
-    button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
-    button4 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
-    button5 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
-    markup.row(button1, button2, button3)
-    markup.row(button4)
-    markup.row(button5)
-    bot.send_message(message.chat.id, text='За что, Сэр?', reply_markup=markup)

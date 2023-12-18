@@ -3,6 +3,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
+import phrases
 
 bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
@@ -35,7 +36,7 @@ def get_text_messages(message):
     elif message.text == 'if he dies':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Отомстить Старому за Апполо Крида...',
-                                                      callback_data='senior'))
+                                                      callback_data='senior2'))
         bot.send_message(message.chat.id, '... he dies.', reply_markup=markup)
     elif message.text == 'скрытое отхлищивание...':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -68,4 +69,10 @@ def get_text_messages(message):
         time.sleep(2)
         rimage2 = random.choice(os.listdir(CRUEL))
         bot.send_photo(message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
-        bot.send_message(message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
+        bot.send_message(message.chat.id, 'МММММММММ!!! ММММММММММММММММММММММ!', reply_markup=markup)
+    elif message.text == 'ты лох':
+        bot.send_message(chat_id='-1001892218052', text='Запомните, твари: Я не сломаюсь..')
+    elif message.text == 'ты лох2':
+        bot.send_message(chat_id='-1001892218052', text='<b>Давтян не дежурный, ошибка системы/b>')
+    elif message.text == 'Похвалить Старого!':
+        bot.send_message(message.chat.id, text=phrases.digital_stariy)

@@ -29,8 +29,8 @@ def query_jokes(call):
         markup.row(button7)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
         bot.send_message(call.message.chat.id,
-                         '{0.first_name}, на каком языке Вы хотели бы порофлить и поорать '
-                         'в голосяру?'.format(call.from_user, bot.get_me()), reply_markup=markup)
+                         'Повеселить вас, Господин? {0.first_name}, хотите расскажу, откуда у меня эти шрамы? '
+                         .format(call.from_user, bot.get_me()), reply_markup=markup)
     elif call.data == 'joke2':
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Русский', callback_data='jokeru')
