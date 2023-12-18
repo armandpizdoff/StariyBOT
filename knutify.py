@@ -32,7 +32,8 @@ def knutirovanie(call):
         button1 = telebot.types.InlineKeyboardButton(text='Да', callback_data='obossali')
         button2 = telebot.types.InlineKeyboardButton(text='Нет', callback_data='mercy')
         markup.row(button1, button2)
-        bot.send_message(call.message.chat.id, "Вы что, и в правду хотите обоссать меня, Сэр?", reply_markup=markup)
+        bot.send_message(call.message.chat.id, "Вы что, и в правду хотите обоссать меня, Сэр? ¯\_(ツ)_/¯",
+                         reply_markup=markup)
     elif call.data == 'obossali':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='knut'))

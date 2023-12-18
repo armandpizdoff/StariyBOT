@@ -4,9 +4,13 @@ import os
 import time
 
 import audiobooks
+import database
 import knutify
 import textcommand
 import jokes
+import psycopg2
+
+# from aiogram.dispatcher import Dispatcher
 
 # import logging
 from dotenv import load_dotenv
@@ -39,6 +43,9 @@ COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
 bot = telebot.TeleBot(TOKEN)
+# db = DatBase()
+# dp = Dispatcher(bot, storage=MemoryStorage())
+
 # logging.debug("A DEBUG Message")
 # logging.info("An INFO")
 # logging.warning("A WARNING")
@@ -88,6 +95,7 @@ def start_message(message):
                                            'выберите интересующий раздел меню'.format(message.from_user, bot.get_me()),
                      parse_mode='markdown', reply_markup=markup)
 # .format(message.chat.id)
+
 
 
 @bot.message_handler(commands=['play'])
@@ -289,6 +297,7 @@ def query_handler(call):
         knutify.knutirovanie(call)
     elif call.data == 'senior2':
         knutify.knutirovanie(call)
+        database.whipper_count(call)
     elif call.data == 'sounds':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Джо Байден", callback_data='djo'))
