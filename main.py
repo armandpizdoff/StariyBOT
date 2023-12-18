@@ -4,13 +4,13 @@ import os
 import time
 
 import audiobooks
+import database
 import knutify
 import textcommand
 import jokes
 import psycopg2
 
-from database import DatBase
-from aiogram.dispatcher import Dispatcher
+# from aiogram.dispatcher import Dispatcher
 
 # import logging
 from dotenv import load_dotenv
@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 # from keyboard import keyboard
 
 load_dotenv()
-TOKEN = os.getenv ('TOKEN')
+TOKEN = os.getenv('TOKEN')
 BASE_PATH = os.getenv('BASE_PATH')
 SOUND = os.getenv('SOUND')
 STORIES = os.getenv('STORIES')
@@ -45,21 +45,14 @@ COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
 bot = telebot.TeleBot(TOKEN)
-db = DatBase()
-dp = Dispatcher(bot, storage=MemoryStorage())
+# db = DatBase()
+# dp = Dispatcher(bot, storage=MemoryStorage())
 
 # logging.debug("A DEBUG Message")
 # logging.info("An INFO")
 # logging.warning("A WARNING")
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
-
-
-class whippers:
-    def __init__(self):
-        first_name = State()
-        second_name = State()
-        whipper_count = State()
 
 
 @bot.message_handler(commands=['help'])
@@ -99,6 +92,11 @@ def start_message(message):
 
 
 # .format(message.chat.id)
+
+@bot.message_handler(commands=['register'])
+def register(message):
+    database.register(message)
+
 
 @bot.message_handler(commands=['knut'])
 def textknut(message):
@@ -291,6 +289,7 @@ def query_handler(call):
         knutify.knutirovanie(call)
     elif call.data == 'senior2':
         knutify.knutirovanie(call)
+        database.whipper_count(call)
     elif call.data == 'sounds':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Джо Байден", callback_data='djo'))
