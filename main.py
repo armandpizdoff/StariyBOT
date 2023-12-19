@@ -54,9 +54,9 @@ bot = telebot.TeleBot(TOKEN)
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
 
-conn = psycopg2.connect(database='DATABASE', user='USER',
-                        password='PASSWORD', host='HOST', port='PORT')
-cursor = conn.cursor()
+# conn = psycopg2.connect(database='DATABASE', user='USER',
+#                         password='PASSWORD', host='HOST', port='PORT')
+# cursor = conn.cursor()
 
 
 @bot.message_handler(commands=['help'])
