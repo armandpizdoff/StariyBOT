@@ -54,6 +54,10 @@ bot = telebot.TeleBot(TOKEN)
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
 
+conn = psycopg2.connect(database='DATABASE', user='USER',
+                        password='PASSWORD', host='HOST', port='PORT')
+cursor = conn.cursor()
+
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
@@ -96,11 +100,6 @@ def start_message(message):
 @bot.message_handler(commands=['register'])
 def register(message):
     database.register(message)
-
-
-@bot.message_handler(commands=['knut'])
-def textknut(message):
-    knutify.text_knutirovanie(message)
 
 
 @bot.message_handler(commands=['play'])

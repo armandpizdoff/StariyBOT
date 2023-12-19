@@ -12,10 +12,10 @@ HOST = os.getenv('HOST')
 PORT = os.getenv('PORT')
 bot = telebot.TeleBot(TOKEN)
 
-# conn = psycopg2.connect(database='DATABASE', user='USER',
-#                         password='PASSWORD', host='HOST', port='PORT')
-# cursor = conn.cursor()
-#
+conn = psycopg2.connect(database='DATABASE', user='USER',
+                        password='PASSWORD', host='HOST', port='PORT')
+cursor = conn.cursor()
+
 # class DatBase:
 #     def __init__(self, knutify_whippers):
 #         # подключение к базе данных
@@ -28,10 +28,6 @@ bot = telebot.TeleBot(TOKEN)
 
 
 def register(message):
-    #подключение к базе
-    conn = psycopg2.connect(database='DATABASE', user='USER',
-                            password='PASSWORD', host='HOST', port='PORT')
-    cursor = conn.cursor()
     # Получение информации о пользователе
     user_id = message.from_user.id
     first_name = message.from_user.first_name
