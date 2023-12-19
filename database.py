@@ -10,7 +10,7 @@ USER = os.getenv('USER')
 PASSWORD = os.getenv('PASSWORD')
 HOST = os.getenv('HOST')
 PORT = os.getenv('PORT')
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot('TOKEN')
 
 conn = psycopg2.connect(database='DATABASE', user='USER',
                         password='PASSWORD', host='HOST', port='PORT')
