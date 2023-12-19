@@ -97,9 +97,9 @@ def start_message(message):
 
 # .format(message.chat.id)
 
-@bot.message_handler(commands=['register'])
-def register(message):
-    database.register(message)
+# @bot.message_handler(commands=['register'])
+# def register(message):
+#     database.register(message)
 
 
 @bot.message_handler(commands=['play'])
@@ -288,7 +288,7 @@ def query_handler(call):
         knutify.knutirovanie(call)
     elif call.data == 'senior2':
         knutify.knutirovanie(call)
-        database.whipper_count(call)
+        # database.whipper_count(call)
     elif call.data == 'sounds':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Джо Байден", callback_data='djo'))
