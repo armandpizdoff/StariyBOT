@@ -44,7 +44,7 @@ MURLOK = os.getenv('MURLOK')
 COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot('TOKEN')
 # db = DatBase()
 # dp = Dispatcher(bot, storage=MemoryStorage())
 
