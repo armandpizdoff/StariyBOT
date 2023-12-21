@@ -12,9 +12,12 @@ HOST = os.getenv('HOST')
 PORT = os.getenv('PORT')
 bot = telebot.TeleBot('TOKEN')
 
-conn = psycopg2.connect(database='DATABASE', user='USER',
-                        password='PASSWORD', host='HOST', port='PORT')
-cursor = conn.cursor()
+# conn = psycopg2.connect(database='DATABASE',
+#                         user='USER',
+#                         password='PASSWORD',
+#                         host='HOST',
+#                         port='PORT')
+# cursor = conn.cursor()
 
 # class DatBase:
 #     def __init__(self, knutify_whippers):

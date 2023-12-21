@@ -4,11 +4,11 @@ import os
 import time
 
 import audiobooks
-import database
+# import datbase
 import knutify
 import textcommand
 import jokes
-import psycopg2
+# import psycopg2
 
 # from aiogram.dispatcher import Dispatcher
 
@@ -44,7 +44,7 @@ MURLOK = os.getenv('MURLOK')
 COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
-bot = telebot.TeleBot('TOKEN')
+bot = telebot.TeleBot(TOKEN)
 # db = DatBase()
 # dp = Dispatcher(bot, storage=MemoryStorage())
 
