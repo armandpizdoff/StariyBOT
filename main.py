@@ -2,27 +2,22 @@ import telebot
 import random
 import os
 import time
+import psycopg2
 
 import audiobooks
-# import datbase
+import database
 import knutify
 import textcommand
 import jokes
-# import psycopg2
+
 
 # from aiogram.dispatcher import Dispatcher
-
 # import logging
-from dotenv import load_dotenv
-
 # import xlrd
 # from bs4 import BeautifulSoup
-
 # from datetime import datetime, timedelta
 # import requests - для парсинга шуток с сайтов
-# from bs4 import BeautifulSoup - для парсинга данных с сайтов
-# from telebot import types
-# from keyboard import keyboard
+from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -44,6 +39,12 @@ MURLOK = os.getenv('MURLOK')
 COMICS = os.getenv('COMICS')
 MILLENNIUM = os.getenv('MILLENNIUM')
 
+DATABASE = os.getenv('DATABASE')
+USER = os.getenv('USER')
+PASSWORD = os.getenv('PASSWORD')
+HOST = os.getenv('HOST')
+PORT = os.getenv('PORT')
+
 bot = telebot.TeleBot(TOKEN)
 # db = DatBase()
 # dp = Dispatcher(bot, storage=MemoryStorage())
@@ -53,10 +54,6 @@ bot = telebot.TeleBot(TOKEN)
 # logging.warning("A WARNING")
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
-
-# conn = psycopg2.connect(database='DATABASE', user='USER',
-#                         password='PASSWORD', host='HOST', port='PORT')
-# cursor = conn.cursor()
 
 
 @bot.message_handler(commands=['help'])
@@ -97,9 +94,16 @@ def start_message(message):
 
 # .format(message.chat.id)
 
-# @bot.message_handler(commands=['register'])
-# def register(message):
-#     database.register(message)
+@bot.message_handler(commands=['whipperreg'])
+def register(message):
+    conn = psycopg2.connect(database=DATABASE,
+                            user=USER,
+                            password=PASSWORD,
+                            host=HOST,
+                            port=PORT)
+    cursor = conn.cursor()
+    database.DatBase.register(message)
+    # database.register(message)
 
 
 @bot.message_handler(commands=['play'])
