@@ -102,9 +102,20 @@ def register(message):
                             host=HOST,
                             port=PORT)
     cursor = conn.cursor()
-    database.DatBase.register(message)
+    # Получение информации о пользователе
+    user_id = message.from_user.id
+    first_name = message.from_user.first_name
+    last_name = message.from_user.last_name
+    # Запись информации о пользователе в базу данных
+    query = f"INSERT INTO users (user_id, first_name, last_name) VALUES ('{user_id}', '{first_name}', '{last_name}')"
+    cursor.execute(query)
+    conn.commit()
+    # Отправка ответа
+    bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем!")
+    # database.DatBase.register(message)
     # database.register(message)
-
+    cursor.close()
+    conn.close()
 
 @bot.message_handler(commands=['play'])
 def fk(message, where_call=None):
