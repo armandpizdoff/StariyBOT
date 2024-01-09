@@ -96,22 +96,21 @@ def start_message(message):
 
 @bot.message_handler(commands=['whipperreg'])
 def register(message):
-    conn = psycopg2.connect(database=DATABASE,
-                            user=USER,
-                            password=PASSWORD,
-                            host=HOST,
-                            port=PORT)
+    markup = telebot.types.InlineKeyboardMarkup()
+    markup.add(telebot.types.InlineKeyboardButton(text='Вернуться к кнутированию', callback_data='knut'))
+    markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+    conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
     cursor = conn.cursor()
     # Получение информации о пользователе
     user_id = message.from_user.id
     first_name = message.from_user.first_name
-    last_name = message.from_user.last_name
+    second_name = message.from_user.last_name
     # Запись информации о пользователе в базу данных
-    query = f"INSERT INTO users (user_id, first_name, last_name) VALUES ('{user_id}', '{first_name}', '{last_name}')"
+    query = f"INSERT INTO knutify_whippers (user_id, first_name, second_name) VALUES ('{user_id}', '{first_name}', '{second_name}')"
     cursor.execute(query)
     conn.commit()
     # Отправка ответа
-    bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем!")
+    bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем!", reply_markup=markup)
     # database.DatBase.register(message)
     # database.register(message)
     cursor.close()
@@ -296,6 +295,34 @@ def query_handler(call):
     elif call.data == 'mercy':
         knutify.knutirovanie(call)
     elif call.data == 'junior':
+        user_id = call.from_user.id
+        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor = conn.cursor()
+        with conn:
+            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+            conn.commit()
+            if bool(cursor.fetchall()):
+                knutify.knutirovanie(call)
+            else:
+                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
+                                                       'кнутировать, пока не заключишь со мной контракт. '
+                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+        return bool(cursor.fetchall())
+
+
+        # Получение информации о пользователе
+        #     user_id = call.from_user.id
+        #
+        #     # Получение текущего значения счётчика пользователя
+        #     query = f"SELECT whipper_count FROM users WHERE user_id={user_id}"
+        #     cursor.execute(query)
+        #     count = cursor.fetchone()[0]
+        #
+        #     # Увеличение счётчика и обновление значения в базе данных
+        #     count += 1
+        #     query = f"UPDATE users SET whipper_count={count} WHERE user_id={user_id}"
+        #     cursor.execute(query)
+        #     conn.commit()
         knutify.knutirovanie(call)
     elif call.data == 'middle':
         knutify.knutirovanie(call)
@@ -529,7 +556,7 @@ def knut(message):
     button1 = telebot.types.InlineKeyboardButton(text='Да', callback_data='knut')
     button2 = telebot.types.InlineKeyboardButton(text='Нет', callback_data='mercy')
     markup.row(button1, button2)
-    bot.send_message(message.chat.id, "Хотите отхлищеть кого-то и выместить на этом человеке свою злость?",
+    bot.send_message(message.chat.id, "Хотите меня отпиздить?",
                      reply_markup=markup)
 
 

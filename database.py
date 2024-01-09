@@ -26,9 +26,9 @@ class DatBase:
         # Получение информации о пользователе
         user_id = message.from_user.id
         first_name = message.from_user.first_name
-        last_name = message.from_user.last_name
+        second_name = message.from_user.last_name
         # Запись информации о пользователе в базу данных
-        query = f"INSERT INTO users (user_id, first_name, last_name) VALUES ('{user_id}', '{first_name}', '{last_name}')"
+        query = f"INSERT INTO knutify_whippers (user_id, second_name, last_name) VALUES ('{user_id}', '{first_name}', '{second_name}')"
         cursor.execute(query)
         conn.commit()
         # Отправка ответа
