@@ -103,6 +103,8 @@ def knutirovanie(call):
                 bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
                                                        'кнутировать, пока не заключишь со мной контракт. '
                                                        '\nЧтобы подписать контракт, нажми /whipperreg')
+            cursor.close()
+            conn.close()
     elif call.data == 'senior':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
@@ -132,6 +134,8 @@ def knutirovanie(call):
                 bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
                                                        'кнутировать, пока не заключишь со мной контракт. '
                                                        '\nЧтобы подписать контракт, нажми /whipperreg')
+            cursor.close()
+            conn.close()
     elif call.data == 'senior2':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
@@ -177,3 +181,5 @@ def knutirovanie(call):
                 bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
                                                        'кнутировать, пока не заключишь со мной контракт. '
                                                        '\nЧтобы подписать контракт, нажми /whipperreg')
+            cursor.close()
+            conn.close()
