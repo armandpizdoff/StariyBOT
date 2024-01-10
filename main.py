@@ -106,8 +106,8 @@ def register(message):
         conn.commit()
         if bool(cursor.fetchall()):
             bot.send_message(message.chat.id, text='{0.first_name}, ты уже заключил со мной '
-                                                      'контракт на кнутирование и обоссывание. Второй контракт '
-                                                      'заключить нельзя!'.format(message.from_user))
+                                                   'контракт на кнутирование и обоссывание. Второй контракт '
+                                                   'заключить нельзя!'.format(message.from_user))
         else:
             markup = telebot.types.InlineKeyboardMarkup()
             markup.add(telebot.types.InlineKeyboardButton(text='Перейти к кнутированию', callback_data='knut'))
@@ -130,6 +130,7 @@ def register(message):
             # database.register(message)
             cursor.close()
             conn.close()
+
 
 @bot.message_handler(commands=['play'])
 def fk(message, where_call=None):
