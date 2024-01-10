@@ -61,6 +61,8 @@ def knutirovanie(call):
                 bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
                                                        'обоссывать, пока не заключишь со мной контракт. '
                                                        '\nЧтобы подписать контракт, нажми /whipperreg')
+            cursor.close()
+            conn.close()
     elif call.data == 'mercy':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='back'))
@@ -82,6 +84,8 @@ def knutirovanie(call):
                 bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
                                                        'кнутировать, пока не заключишь со мной контракт. '
                                                        '\nЧтобы подписать контракт, нажми /whipperreg')
+            cursor.close()
+            conn.close()
     elif call.data == 'middle':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
