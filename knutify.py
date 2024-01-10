@@ -3,13 +3,20 @@ import random
 import os
 import time
 import phrases
+import psycopg2
 from dotenv import load_dotenv
 
 
-bot = telebot.TeleBot('5923409986:AAGh_or9NPf2wv_2DqI7BksTH3T2WMf9DQA')
 load_dotenv()
+TOKEN = os.getenv('TOKEN')
 PIC = os.getenv('PIC')
 CRUEL = os.getenv('CRUEL')
+bot = telebot.TeleBot(TOKEN)
+DATABASE = os.getenv('DATABASE')
+USER = os.getenv('USER')
+PASSWORD = os.getenv('PASSWORD')
+HOST = os.getenv('HOST')
+PORT = os.getenv('PORT')
 
 
 def knutirovanie(call):
