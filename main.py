@@ -291,7 +291,19 @@ def query_handler(call):
     elif call.data == 'clarify':
         knutify.knutirovanie(call)
     elif call.data == 'obossali':
-        knutify.knutirovanie(call)
+        user_id = call.from_user.id
+        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor = conn.cursor()
+        with conn:
+            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+            conn.commit()
+            if bool(cursor.fetchall()):
+                knutify.knutirovanie(call)
+            else:
+                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
+                                                       'кнутировать, пока не заключишь со мной контракт. '
+                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+        return bool(cursor.fetchall())
     elif call.data == 'mercy':
         knutify.knutirovanie(call)
     elif call.data == 'junior':
@@ -327,9 +339,33 @@ def query_handler(call):
     elif call.data == 'middle':
         knutify.knutirovanie(call)
     elif call.data == 'senior':
-        knutify.knutirovanie(call)
+        user_id = call.from_user.id
+        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor = conn.cursor()
+        with conn:
+            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+            conn.commit()
+            if bool(cursor.fetchall()):
+                knutify.knutirovanie(call)
+            else:
+                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
+                                                       'кнутировать, пока не заключишь со мной контракт. '
+                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+        return bool(cursor.fetchall())
     elif call.data == 'senior2':
-        knutify.knutirovanie(call)
+        user_id = call.from_user.id
+        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor = conn.cursor()
+        with conn:
+            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+            conn.commit()
+            if bool(cursor.fetchall()):
+                knutify.knutirovanie(call)
+            else:
+                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
+                                                       'кнутировать, пока не заключишь со мной контракт. '
+                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+        return bool(cursor.fetchall())
         # database.whipper_count(call)
     elif call.data == 'sounds':
         markup = telebot.types.InlineKeyboardMarkup()

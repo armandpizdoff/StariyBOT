@@ -54,11 +54,22 @@ def knutirovanie(call):
     elif call.data == 'junior':
         bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
     elif call.data == 'middle':
-        bot.send_message(call.message.chat.id, 'Нет, я не дам себя в обиду. Руки! ')
-        time.sleep(1)
-        bot.send_message(call.message.chat.id, 'А то малява на Ваше имя уже завтра будет в мусарне...')
-        time.sleep(2)
-        bot.send_message(call.message.chat.id, 'Да, я мусарнусь.')
+        user_id = call.from_user.id
+        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+        cursor = conn.cursor()
+        with conn:
+            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+            conn.commit()
+            if bool(cursor.fetchall()):
+                bot.send_message(call.message.chat.id, 'Нет, я не дам себя в обиду. Руки! ')
+                time.sleep(1)
+                bot.send_message(call.message.chat.id, 'А то малява на Ваше имя уже завтра будет в мусарне...')
+                time.sleep(2)
+                bot.send_message(call.message.chat.id, 'Да, я мусарнусь.')
+            else:
+                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
+                                                       'кнутировать, пока не заключишь со мной контракт. '
+                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
     elif call.data == 'senior':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Пиздануть ещё раз', callback_data='senior'))
