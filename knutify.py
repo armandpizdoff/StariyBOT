@@ -58,9 +58,11 @@ def knutirovanie(call):
                                    animation=open(PIC + 'obossal i otstraponil/obossal.gif', 'rb'),
                                    reply_markup=markup)
             else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'обоссывать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+                bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
+                                                            'права меня обоссывать, пока не заключишь со мной '
+                                                            'контракт. '
+                                                            '\nЧтобы подписать контракт, нажми /whipperreg'
+                                 .format(call.message.from_user))
             cursor.close()
             conn.close()
     elif call.data == 'mercy':
@@ -81,9 +83,11 @@ def knutirovanie(call):
             if bool(cursor.fetchall()):
                 bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
             else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+                bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
+                                                            'права меня кнутировать, пока не заключишь со мной '
+                                                            'контракт. '
+                                                            '\nЧтобы подписать контракт, нажми /whipperreg'
+                                 .format(call.message.from_user))
             cursor.close()
             conn.close()
     elif call.data == 'middle':
@@ -100,9 +104,11 @@ def knutirovanie(call):
                 time.sleep(2)
                 bot.send_message(call.message.chat.id, 'Да, я мусарнусь.')
             else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+                bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
+                                                            'права меня кнутировать, пока не заключишь со мной '
+                                                            'контракт. '
+                                                            '\nЧтобы подписать контракт, нажми /whipperreg'
+                                 .format(call.message.from_user))
             cursor.close()
             conn.close()
     elif call.data == 'senior':
@@ -131,9 +137,11 @@ def knutirovanie(call):
                 bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage, 'rb'))
                 bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
             else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+                bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
+                                                            'права меня кнутировать, пока не заключишь со мной '
+                                                            'контракт. '
+                                                            '\nЧтобы подписать контракт, нажми /whipperreg'
+                                 .format(call.message.from_user))
             cursor.close()
             conn.close()
     elif call.data == 'senior2':
@@ -178,8 +186,10 @@ def knutirovanie(call):
                 bot.send_photo(call.message.chat.id, photo=open(CRUEL + rimage2, 'rb'))
                 bot.send_message(call.message.chat.id, "МММММММММ!!! ММММММММММММММММММММММ!", reply_markup=markup)
             else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
+                bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
+                                                            'права меня кнутировать, пока не заключишь со мной '
+                                                            'контракт. '
+                                                            '\nЧтобы подписать контракт, нажми /whipperreg'
+                                 .format(call.message.from_user))
             cursor.close()
             conn.close()
