@@ -105,7 +105,7 @@ def register(message):
         cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
         conn.commit()
         if bool(cursor.fetchall()):
-            bot.send_message(message.message.chat.id, text='{0.first_name}, ты уже заключил со мной '
+            bot.send_message(message.chat.id, text='{0.first_name}, ты уже заключил со мной '
                                                       'контракт на кнутирование и обоссывание. Второй контракт '
                                                       'заключить нельзя!'.format(message.from_user))
         else:
