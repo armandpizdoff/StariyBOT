@@ -98,25 +98,38 @@ def start_message(message):
 
 @bot.message_handler(commands=['whipperreg'])
 def register(message):
-    markup = telebot.types.InlineKeyboardMarkup()
-    markup.add(telebot.types.InlineKeyboardButton(text='Вернуться к кнутированию', callback_data='knut'))
-    markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+    user_id = message.from_user.id
     conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
     cursor = conn.cursor()
-    # Получение информации о пользователе
-    user_id = message.from_user.id
-    first_name = message.from_user.first_name
-    second_name = message.from_user.last_name
-    # Запись информации о пользователе в базу данных
-    query = f"INSERT INTO knutify_whippers (user_id, first_name, second_name) VALUES ('{user_id}', '{first_name}', '{second_name}')"
-    cursor.execute(query)
-    conn.commit()
-    # Отправка ответа
-    bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем!", reply_markup=markup)
-    # database.DatBase.register(message)
-    # database.register(message)
-    cursor.close()
-    conn.close()
+    with conn:
+        cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
+        conn.commit()
+        if bool(cursor.fetchall()):
+            bot.send_message(message.message.chat.id, text='{0.first_name}, ты уже заключил со мной '
+                                                      'контракт на кнутирование и обоссывание. Второй контракт '
+                                                      'заключить нельзя!'.format(message.from_user))
+        else:
+            markup = telebot.types.InlineKeyboardMarkup()
+            markup.add(telebot.types.InlineKeyboardButton(text='Перейти к кнутированию', callback_data='knut'))
+            markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+            conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
+            cursor = conn.cursor()
+            # Получение информации о пользователе
+            user_id = message.from_user.id
+            first_name = message.from_user.first_name
+            second_name = message.from_user.last_name
+            # Запись информации о пользователе в базу данных
+            query = (f"INSERT INTO knutify_whippers (user_id, first_name, second_name) VALUES ('{user_id}', "
+                     f"'{first_name}', '{second_name}')")
+            cursor.execute(query)
+            conn.commit()
+            # Отправка ответа
+            bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем! ;)",
+                         reply_markup=markup)
+            # database.DatBase.register(message)
+            # database.register(message)
+            cursor.close()
+            conn.close()
 
 @bot.message_handler(commands=['play'])
 def fk(message, where_call=None):
