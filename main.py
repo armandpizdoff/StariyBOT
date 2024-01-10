@@ -80,10 +80,12 @@ def start_message(message):
     button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
     button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
     button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-    button6 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
+    button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (beta)', url='onlynotcrankshaft.ru')
+    button7 = telebot.types.InlineKeyboardButton(text='Закрыть🚫', callback_data='cancel')
     markup.row(button1, button2)
     markup.row(button3, button4, button5)
     markup.row(button6)
+    markup.row(button7)
     bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, мой Космический Директор Архангел!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
                                            '\nЯ очень не люблю круговое обоссывание. '
@@ -279,10 +281,12 @@ def query_handler(call):
         button3 = telebot.types.InlineKeyboardButton(text='Кнут', callback_data='knut')
         button4 = telebot.types.InlineKeyboardButton(text='Anime-chan🧏🏻‍♀', callback_data='animechan')
         button5 = telebot.types.InlineKeyboardButton(text='Рабочий график', callback_data='grafik')
-        button6 = telebot.types.InlineKeyboardButton(text="Закрыть🚫", callback_data='cancel')
+        button6 = telebot.types.InlineKeyboardButton(text='WEB-Старый (beta)', url='onlynotcrankshaft.ru')
+        button7 = telebot.types.InlineKeyboardButton(text="Закрыть🚫", callback_data='cancel')
         markup.row(button1, button2)
         markup.row(button3, button4, button5)
         markup.row(button6)
+        markup.row(button7)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'knut':
         knutify.knutirovanie(call)
@@ -291,82 +295,17 @@ def query_handler(call):
     elif call.data == 'clarify':
         knutify.knutirovanie(call)
     elif call.data == 'obossali':
-        user_id = call.from_user.id
-        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
-        cursor = conn.cursor()
-        with conn:
-            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
-            conn.commit()
-            if bool(cursor.fetchall()):
-                knutify.knutirovanie(call)
-            else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
-        return bool(cursor.fetchall())
+        knutify.knutirovanie(call)
     elif call.data == 'mercy':
         knutify.knutirovanie(call)
     elif call.data == 'junior':
-        user_id = call.from_user.id
-        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
-        cursor = conn.cursor()
-        with conn:
-            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
-            conn.commit()
-            if bool(cursor.fetchall()):
-                knutify.knutirovanie(call)
-            else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
-        return bool(cursor.fetchall())
-
-
-        # Получение информации о пользователе
-        #     user_id = call.from_user.id
-        #
-        #     # Получение текущего значения счётчика пользователя
-        #     query = f"SELECT whipper_count FROM users WHERE user_id={user_id}"
-        #     cursor.execute(query)
-        #     count = cursor.fetchone()[0]
-        #
-        #     # Увеличение счётчика и обновление значения в базе данных
-        #     count += 1
-        #     query = f"UPDATE users SET whipper_count={count} WHERE user_id={user_id}"
-        #     cursor.execute(query)
-        #     conn.commit()
         knutify.knutirovanie(call)
     elif call.data == 'middle':
         knutify.knutirovanie(call)
     elif call.data == 'senior':
-        user_id = call.from_user.id
-        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
-        cursor = conn.cursor()
-        with conn:
-            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
-            conn.commit()
-            if bool(cursor.fetchall()):
-                knutify.knutirovanie(call)
-            else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
-        return bool(cursor.fetchall())
+        knutify.knutirovanie(call)
     elif call.data == 'senior2':
-        user_id = call.from_user.id
-        conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
-        cursor = conn.cursor()
-        with conn:
-            cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
-            conn.commit()
-            if bool(cursor.fetchall()):
-                knutify.knutirovanie(call)
-            else:
-                bot.send_message(call.message.chat.id, 'Стоять, дружок-пирожок. Ты не имеешь права меня '
-                                                       'кнутировать, пока не заключишь со мной контракт. '
-                                                       '\nЧтобы подписать контракт, нажми /whipperreg')
-        return bool(cursor.fetchall())
-        # database.whipper_count(call)
+        knutify.knutirovanie(call)
     elif call.data == 'sounds':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Джо Байден", callback_data='djo'))
