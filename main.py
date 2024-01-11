@@ -266,8 +266,9 @@ def music(message):
 
 @bot.message_handler(commands=['id_chat'])
 def id_chat(message):
-    bot.send_message(message.chat.id, text='ID чата: ' + str(message.chat.id)
-                                           '\nID пользователя: ' + str(message.from_user.id)
+    short_ID1 = 'ID чата: ' + str(message.chat.id)
+    short_ID2 = '\nID пользователя: ' + str(message.from_user.id)
+    bot.send_message(message.chat.id, text=short_ID1 + short_ID2)
 
 
 @bot.callback_query_handler(func=lambda call: True)
