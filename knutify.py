@@ -49,6 +49,8 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
+                cursor.execute('UPDATE knutify_whippers SET pipi_count=pipi_count+1 WHERE user_id = %s' % user_id)
+                conn.commit()
                 markup = telebot.types.InlineKeyboardMarkup()
                 markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='knut'))
                 bot.send_message(call.message.chat.id, text='{0.first_name} ({0.last_name} который), '
@@ -79,7 +81,6 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
-                # count = 1
                 cursor.execute('UPDATE knutify_whippers SET whipper_count=whipper_count+1 WHERE user_id = %s' % user_id)
                 conn.commit()
                 bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
@@ -97,6 +98,8 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
+                cursor.execute('UPDATE knutify_whippers SET whipper_count=whipper_count+1 WHERE user_id = %s' % user_id)
+                conn.commit()
                 bot.send_message(call.message.chat.id, 'Нет, я не дам себя в обиду. Руки! ')
                 time.sleep(1)
                 bot.send_message(call.message.chat.id, 'А то малява на Ваше имя уже завтра будет в мусарне...')
@@ -116,6 +119,8 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
+                cursor.execute('UPDATE knutify_whippers SET whipper_count=whipper_count+1 WHERE user_id = %s' % user_id)
+                conn.commit()
                 markup = telebot.types.InlineKeyboardMarkup()
                 markup.add(telebot.types.InlineKeyboardButton(text='Пиздануть ещё раз', callback_data='senior'))
                 markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
@@ -148,6 +153,8 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
+                cursor.execute('UPDATE knutify_whippers SET whipper_count=whipper_count+1 WHERE user_id = %s' % user_id)
+                conn.commit()
                 markup = telebot.types.InlineKeyboardMarkup()
                 markup.add(telebot.types.InlineKeyboardButton(text='Продолжать уродовать выблядка 👨‍🦼',
                                                               callback_data='senior2'))
