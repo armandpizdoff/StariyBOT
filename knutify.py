@@ -79,6 +79,9 @@ def knutirovanie(call):
             cursor.execute('SELECT *FROM knutify_whippers WHERE user_id = %s' % user_id)
             conn.commit()
             if bool(cursor.fetchall()):
+                # count = 1
+                cursor.execute('UPDATE knutify_whippers SET whipper_count=whipper_count+1 WHERE user_id = %s' % user_id)
+                conn.commit()
                 bot.send_message(call.message.chat.id, 'Простите, Сэр! Вы не имеете права.')
             else:
                 bot.send_message(call.message.chat.id, text='Стоять, дружок-пирожок. {0.first_name}, ты не имеешь '
