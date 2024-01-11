@@ -264,6 +264,12 @@ def music(message):
     bot.send_audio(message.chat.id, audio=open(directory + audio, 'rb'), reply_markup=markup)
 
 
+@bot.message_handler(commands=['id_chat'])
+def id_chat(message):
+    bot.send_message(message.chat.id, text='ID чата:' + message.chat.id)
+    bot.send_message(message.chat.id, text='ID пользователя:' + message.from_user.id)
+
+
 @bot.callback_query_handler(func=lambda call: True)
 def query_handler(call):
     bot.answer_callback_query(callback_query_id=call.id)
