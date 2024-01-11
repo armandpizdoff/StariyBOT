@@ -63,8 +63,6 @@ def knutirovanie(call):
                                                             'контракт. '
                                                             '\nЧтобы подписать контракт, нажми /whipperreg'
                                  .format(call.message.from_user))
-            cursor.close()
-            conn.close()
     elif call.data == 'mercy':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text='Назад', callback_data='back'))
@@ -88,8 +86,6 @@ def knutirovanie(call):
                                                             'контракт. '
                                                             '\nЧтобы подписать контракт, нажми /whipperreg'
                                  .format(call.message.from_user))
-            cursor.close()
-            conn.close()
     elif call.data == 'middle':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
@@ -109,8 +105,6 @@ def knutirovanie(call):
                                                             'контракт. '
                                                             '\nЧтобы подписать контракт, нажми /whipperreg'
                                  .format(call.message.from_user))
-            cursor.close()
-            conn.close()
     elif call.data == 'senior':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
@@ -125,11 +119,12 @@ def knutirovanie(call):
                 rimage = random.choice(os.listdir(CRUEL))
                 rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
                                          'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* '])
-                rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ', '(ооо, даа...) ',
-                                          'УХ БЛЯ ', 'Равиолли с сыром, пожалуйста! ', 'СЖАЛЬСЯ, ГАНДОН! ',
-                                          'ТОЛЬКО НЕ КАЛЕНВАЛ! ', '*звуки насилия* ', 'кто-нибудь, подберите мои зубы! '])
-                rscream3 = random.choice(['*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'СЭР! У меня лопатка оторвалась! ',
-                                          'ХРЕБЕ-Е-ЕТ!!! ', 'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа! ',
+                rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ',
+                                          '(ооо, даа...) ', 'УХ БЛЯ ', 'Равиолли с сыром, пожалуйста! ',
+                                          'СЖАЛЬСЯ, ГАНДОН! ', 'ТОЛЬКО НЕ КАЛЕНВАЛ! ', '*звуки насилия* ',
+                                          'кто-нибудь, подберите мои зубы! '])
+                rscream3 = random.choice(['*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'СЭР! У меня лопатка оторвалась!',
+                                          'ХРЕБЕ-Е-ЕТ!!! ', 'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа!',
                                           'А-А-А-А!!! ', 'Кто-нибудь, подберите мою скальп!!! '])
                 bot.send_message(call.message.chat.id, rscream + rscream2)
                 time.sleep(1)
@@ -142,8 +137,6 @@ def knutirovanie(call):
                                                             'контракт. '
                                                             '\nЧтобы подписать контракт, нажми /whipperreg'
                                  .format(call.message.from_user))
-            cursor.close()
-            conn.close()
     elif call.data == 'senior2':
         user_id = call.from_user.id
         conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
@@ -160,16 +153,17 @@ def knutirovanie(call):
                 rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
                                          'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* ',
                                          'А-АЙ, жооопа! '])
-                rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ', '(ооо, даа...) ',
-                                          'УХ БЛЯ ', 'ПОЖАЛУЙСТА!! ', 'СЖАЛЬСЯ, ГАНДОН! ', 'ТОЛЬКО НЕ КАЛЕНВАЛ! ',
-                                          '*звуки насилия* ', 'кто-нибудь, подберите мои зубы! ',
-                                          'Только не равиолли с сыром в анал! ТОЛЬКО НЕ РАВИОЛЛИ С СЫРОМ В АНАЛ! НЕЕЕЕЕЕАТ! '])
+                rscream2 = random.choice(['*звук адского хлыста* ', 'АЙ БЛЯТЬ, МОИ ЯЙЦА! ', 'ЙОБАНЫЙ ВРОТ! ',
+                                          '(ооо, даа...) ', 'УХ БЛЯ ', 'ПОЖАЛУЙСТА!! ', 'СЖАЛЬСЯ, ГАНДОН! ',
+                                          'ТОЛЬКО НЕ КАЛЕНВАЛ! ', '*звуки насилия* ', 'кто-нибудь, подберите мои зубы!',
+                                          'Только не равиолли с сыром в анал! ТОЛЬКО НЕ РАВИОЛЛИ С СЫРОМ В АНАЛ! '
+                                          'НЕЕЕЕЕЕАТ! '])
                 rscream3 = random.choice(['*слёзы* ', '*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'ХРЕБЕ-Е-ЕТ!!! ',
                                           'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа! ',
                                           'А-А-А-А!!! ', 'СЭР! У меня лопатка оторвалась! ',
                                           'Кто-нибудь, подберите мою скальп!!! '])
                 rscream4 = random.choice(['АРХГХРХХХХ ', 'СЭР! ОНО НЕ ВЛЕЗАЕТ МНЕ В АНАЛ! ',
-                                          'КНУТ РАССЁК МОЁ ПРАВОЕ ЯИЦО! ААА! ', 'Нет, я не носил парик! Моя Скальп!!! '])
+                                          'КНУТ РАССЁК МОЁ ПРАВОЕ ЯИЦО! ААА! ', 'Нет, я не носил парик! Моя Скальп!!!'])
                 bot.send_message(call.message.chat.id, 'О, нет, Господин {0.first_name}, СЖАЛЬТЕСЬ! Только не снова! '
                                                        '\nОЙ! Остановитесь! Умоляю, не нужно!'
                                  .format(call.from_user, bot.get_me()))
@@ -191,5 +185,3 @@ def knutirovanie(call):
                                                             'контракт. '
                                                             '\nЧтобы подписать контракт, нажми /whipperreg'
                                  .format(call.message.from_user))
-            cursor.close()
-            conn.close()

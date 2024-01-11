@@ -119,8 +119,7 @@ def register(message):
             first_name = message.from_user.first_name
             second_name = message.from_user.last_name
             # Запись информации о пользователе в базу данных
-            query = (f"INSERT INTO knutify_whippers (user_id, first_name, second_name) VALUES ('{user_id}', "
-                     f"'{first_name}', '{second_name}')")
+            query = (f"INSERT INTO knutify_whippers (user_id, first_name, second_name) VALUES ('{user_id}', '{first_name}', '{second_name}')")
             cursor.execute(query)
             conn.commit()
             # Отправка ответа
