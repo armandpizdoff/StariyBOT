@@ -86,9 +86,9 @@ def start_message(message):
     markup.row(button3, button4, button5)
     markup.row(button6)
     markup.row(button7)
-    bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, мой Космический Директор Архангел!'
+    bot.send_message(message.chat.id, text='*Здравствуйте, Космический Директор Архангел {0.first_name}!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
-                                           '\nЯ очень не люблю круговое обоссывание. '
+                                           '\nЯ очень не люблю, когда меня хлищут кнутом, и круговое обоссывание. '
                                            '\nЧтобы использовать меня в своих личных целях, '
                                            'выберите интересующий раздел меню'.format(message.from_user, bot.get_me()),
                      parse_mode='markdown', reply_markup=markup)
@@ -125,11 +125,10 @@ def register(message):
             # Отправка ответа
             bot.reply_to(message, "Вы подписали контракт на кнутирование Старого. Поздравляем! ;)",
                          reply_markup=markup)
-            # database.DatBase.register(message)
-            # database.register(message)
             cursor.close()
             conn.close()
-
+            # database.DatBase.register(message)
+            # database.register(message)
 
 @bot.message_handler(commands=['play'])
 def fk(message, where_call=None):
@@ -589,6 +588,11 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'скрытое отхлищивание...':
         textcommand.get_text_messages(message)
-
+    elif message.text == 'ты лох':
+        textcommand.get_text_messages(message)
+    elif message.text == 'ты лох2':
+        textcommand.get_text_messages(message)
+    elif message.text == 'Похвалить Старого!':
+        textcommand.get_text_messages(message)
 
 bot.polling(none_stop=True, interval=0)
