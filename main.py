@@ -86,7 +86,8 @@ def start_message(message):
     markup.row(button3, button4, button5)
     markup.row(button6)
     markup.row(button7)
-    bot.send_message(message.chat.id, text='*Здравствуйте, Космический Директор Архангел {0.first_name}!'
+    bot.send_message(message.chat.id, text='*Здравствуйте, {0.first_name}, Космический Директор-Архангел, '
+                                           'Галактический Управляющий, Светлейший Граф-Герцог!'
                                            '\nЯ ваш блядский дворецкий Старый (@_@)* '
                                            '\nЯ очень не люблю, когда меня хлищут кнутом, и круговое обоссывание. '
                                            '\nЧтобы использовать меня в своих личных целях, '
