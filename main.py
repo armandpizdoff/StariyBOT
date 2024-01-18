@@ -454,7 +454,7 @@ def query_handler(call):
         bot.send_audio(call.message.chat.id, audio=open(OTHER + audio, 'rb'), reply_markup=markup)
     elif call.data == 'grafik':
         markup = telebot.types.InlineKeyboardMarkup()
-        markup.add(telebot.types.InlineKeyboardButton(text='Показать график',
+        markup.add(telebot.types.InlineKeyboardButton(text='Показать график (пока не работает)',
                                                       callback_data='grafikpic'))  # в идеале - скрин графика
         markup.add(telebot.types.InlineKeyboardButton(text='Скинуть график', callback_data="grafikfile"))
         markup.add(telebot.types.InlineKeyboardButton(text="График внерабочих консультаций поющих ведущих",
