@@ -22,16 +22,15 @@ PORT = os.getenv('PORT')
 def knutirovanie(call):
     if call.data == 'knut':
         markup = telebot.types.InlineKeyboardMarkup()
-        button1 = telebot.types.InlineKeyboardButton(text='Лёгкое⚡', callback_data='junior')
-        button2 = telebot.types.InlineKeyboardButton(text='Среднее♿⚡', callback_data='middle')
-        button3 = telebot.types.InlineKeyboardButton(text='Старое⚡♿⚡', callback_data='senior')
-        button4 = telebot.types.InlineKeyboardButton(text='👨‍🦼👨‍🦼Кнутирование 4-го уровня👨‍🦼👨‍🦼',
-                                                     callback_data='senior2')
+        button1 = telebot.types.InlineKeyboardButton(text='Лёгкое🧐', callback_data='junior')
+        button2 = telebot.types.InlineKeyboardButton(text='Среднее😤', callback_data='middle')
+        button3 = telebot.types.InlineKeyboardButton(text='Старое👩‍🦼', callback_data='senior')
+        button4 = telebot.types.InlineKeyboardButton(text='Лютое😱', callback_data='senior2')
         button5 = telebot.types.InlineKeyboardButton(text='Обоссывание🚾💦', callback_data='clarify')
         button6 = telebot.types.InlineKeyboardButton(text='Статистика и достижения', url='onlynotcrankshaft.ru/knutify')
         button7 = telebot.types.InlineKeyboardButton(text='Отмена кнутирования', callback_data='back')
         markup.row(button1, button2, button3)
-        markup.row(button4,button5)
+        markup.row(button4, button5)
         markup.row(button6, button7)
         bot.send_message(call.message.chat.id, text='Пожалуйста, выберите тип кнутирования:', reply_markup=markup)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
@@ -132,9 +131,9 @@ def knutirovanie(call):
                                           '(ооо, даа...) ', 'УХ БЛЯ ', 'Равиолли с сыром, пожалуйста! ',
                                           'СЖАЛЬСЯ, ГАНДОН! ', 'ТОЛЬКО НЕ КАЛЕНВАЛ! ', '*звуки насилия* ',
                                           'кто-нибудь, подберите мои зубы! '])
-                rscream3 = random.choice(['*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'СЭР! У меня лопатка оторвалась! ',
-                                          'ХРЕБЕ-Е-ЕТ!!! ', 'МОЙ ПЕНИС! БОЖЕ! ', 'Пальцевые слайсы?! ', 'А-АЙ, жооопа! ',
-                                          'А-А-А-А!!! ', 'Кто-нибудь, подберите мою скальп!!! '])
+                rscream3 = random.choice(['*ахегао* ', 'УМОЛЯЮ! ', 'ГЛБГЛБГЛБГЛГЛБ ', 'МОЙ ПЕНИС! БОЖЕ! ',
+                                          'СЭР! У меня лопатка оторвалась! ', 'ХРЕБЕ-Е-ЕТ!!! ',  'Пальцевые слайсы?! ',
+                                          'А-АЙ, жооопа! ', 'А-А-А-А!!! ', 'Кто-нибудь, подберите мою скальп!!! '])
                 bot.send_message(call.message.chat.id, rscream + rscream2)
                 time.sleep(1)
                 bot.send_message(call.message.chat.id, rscream3)
