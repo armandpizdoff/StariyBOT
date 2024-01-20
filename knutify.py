@@ -123,7 +123,8 @@ def knutirovanie(call):
                 conn.commit()
                 markup = telebot.types.InlineKeyboardMarkup()
                 markup.add(telebot.types.InlineKeyboardButton(text='Пиздануть ещё раз', callback_data='senior'))
-                markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+                markup.add(telebot.types.InlineKeyboardButton(text='Возврат к выбору кнутирования',
+                                                              callback_data='knut'))
                 rimage = random.choice(os.listdir(CRUEL))
                 rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
                                          'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* '])
@@ -158,7 +159,8 @@ def knutirovanie(call):
                 markup = telebot.types.InlineKeyboardMarkup()
                 markup.add(telebot.types.InlineKeyboardButton(text='Продолжать уродовать выблядка 👨‍🦼',
                                                               callback_data='senior2'))
-                markup.add(telebot.types.InlineKeyboardButton(text='Главное меню', callback_data='back'))
+                markup.add(telebot.types.InlineKeyboardButton(text='Возврат к выбору кнутирования',
+                                                              callback_data='knut'))
                 rimage = random.choice(os.listdir(CRUEL))
                 rscream = random.choice(['Да блять! ', 'АЙ БЛЯТЬ!!! ', 'А-А-А-А!!! ', 'КАЛЕНВАЛ? ', 'ЙОБАНЫЙ ВРОТ! ',
                                          'МОЙ АНАЛ, МОЙ АНАЛ! ', 'НОГА, НОГААА! ', 'Что, опять избиение? ', '*вопли* ',
