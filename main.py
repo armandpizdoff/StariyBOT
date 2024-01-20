@@ -612,8 +612,6 @@ def get_text_messages(message):
         textcommand.get_text_messages(message)
     elif message.text == 'Похвалить Старого!':
         textcommand.get_text_messages(message)
-    elif message.text == 'тест':
-        bot.send_photo(message.chat.id, photo=open('AgACAgIAAxkBAAEWssFlD5Ba_zODDbPJ9kb8U07VDA94jQACwckxG730gUiSGAWcmALv5QEAAwIAA3gAAzAE', 'rb'))
 
 
 bot.polling(none_stop=True, interval=0)
