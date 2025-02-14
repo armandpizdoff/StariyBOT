@@ -577,7 +577,7 @@ def hui(message):
     bot.send_message(message.chat.id, "*жирным.*", parse_mode='markdown')
 
 
-@bot.message_handler(func=lambda message: {'денег', 'деньги', 'бабки', 'лаве', 'скинуться'} in message.text.lower(),
+@bot.message_handler(func=lambda message: 'деньги' in message.text.lower(),
                      content_types=['text'])
 def hui(message):
     bot.send_message(message.chat.id, "Не забудьте, что и батюшку нужно порадовать, иначе жить вы будете во грехе",
