@@ -580,6 +580,7 @@ def hui(message):
 @bot.message_handler(func=lambda message: 'игнат' in message.text.lower(), content_types=['text'])
 def ignat(message):
     bot.send_photo(message.chat.id, photo=open(PIC + 'pskov/pskov.png', "rb"))
+    bot.send_audio(message.chat.id, audio=open(SOUND + 'pskovskoe_p.mp3', "rb"))
     time.sleep(2)
     bot.send_message(message.chat.id, 'Дрочи мой хуй себе в рот...')
     time.sleep(2)
