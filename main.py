@@ -577,6 +577,15 @@ def hui(message):
     bot.send_message(message.chat.id, "*жирным.*", parse_mode='markdown')
 
 
+@bot.message_handler(func=lambda message: {'денег', 'деньги', 'бабки', 'лаве', 'скинуться'} in message.text.lower(),
+                     content_types=['text'])
+def hui(message):
+    bot.send_message(message.chat.id, "Не забудьте, что и батюшку нужно порадовать, иначе жить вы будете во грехе",
+                     parse_mode='markdown')
+    bot.send_message(message.chat.id, "*https://boosty.to/armand_pzd*",
+                     parse_mode='markdown')
+
+
 @bot.message_handler(func=lambda message: 'игнат' in message.text.lower(), content_types=['text'])
 def ignat(message):
     bot.send_photo(message.chat.id, photo=open(PIC + 'pskov/pskov.png', "rb"))
