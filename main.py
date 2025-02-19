@@ -154,7 +154,7 @@ def fk(message, where_call=None):
 def random_number(message, attempt):
     if message.text.isdigit():
         n = int(message.text)
-        if attempt <= 6:
+        if attempt <= 5:
             attempt += 1
             if n < number:
                 msg = bot.send_message(message.chat.id, 'Нет, загаданное число больше!')
