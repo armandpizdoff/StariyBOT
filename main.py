@@ -602,6 +602,11 @@ def shamil(message):
                                       '\nhttps://www.youtube.com/watch?v=USrirfiv0L8')
 
 
+@bot.message_handler(func=lambda message: 'мбапок' in message.text.lower(), content_types=['text'])
+def mbapok(message):
+    bot.send_message(message.chat.id, 'мбапок')
+
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text == 'музыка':
